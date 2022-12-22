@@ -32,6 +32,9 @@ func _input(event):
 				print("child couhnt:", get_child_count())
 				print("child couhnt:", line_index)
 				get_child(line_index - 1).queue_free() #erase last line
+#			else:
+#				queue_free()
+#				wire_index -= 1
 		if event.is_action_pressed("left_click"):
 				
 			var line = Line.instance()
