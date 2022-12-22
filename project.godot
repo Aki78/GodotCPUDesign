@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "CordLine",
+"language": "GDScript",
+"path": "res://Cord2.gd"
+} ]
+_global_script_class_icons={
+"CordLine": ""
+}
+
 [application]
 
 config/name="Cpu Godot"
