@@ -23,7 +23,6 @@ func init(last_center, new_group_name):
 	center1 = last_center
 	group_name = new_group_name
 	
-
 func set_bit(newbit):
 	bit = newbit
 #	if old_bit != bit:
@@ -33,14 +32,11 @@ func set_bit(newbit):
 	else:
 		$ColorRect.modulate.r = 255
 		$ColorRect.modulate.b = 0
-	
-#	print(bit)
 
 func set_poly():
 	var mouse_pos = get_global_mouse_position()
 	var theta_deg = rad2deg(get_angle_to(mouse_pos - center1))
 	var theta_int = int(round(theta_deg/steps))*steps
-
 
 	if theta_int != theta_before:
 		theta = deg2rad(theta_int)
