@@ -28,7 +28,7 @@ func _input(event):
 		print("index", get_index())
 		print("current_wire_index", wire_index)
 		if event.is_action_pressed("new_wire") or event.is_action_pressed("escape"):
-			if get_child_count() > 1:
+			if get_child_count() > 0:
 				print("child couhnt:", get_child_count())
 				get_child(line_index - 1).queue_free() #erase last line
 		if event.is_action_pressed("left_click"):
