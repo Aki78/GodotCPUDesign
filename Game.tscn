@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Wires.gd" type="Script" id=1]
 [ext_resource path="res://Bit.gd" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Label.gd" type="Script" id=4]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -43,4 +44,16 @@ margin_bottom = 331.0
 rect_scale = Vector2( 0.976665, 0.971515 )
 texture_normal = ExtResource( 3 )
 
+[node name="Timer" type="Timer" parent="Bit"]
+wait_time = 0.1
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = 68.0
+margin_top = 542.0
+margin_right = 108.0
+margin_bottom = 556.0
+script = ExtResource( 4 )
+
 [connection signal="pressed" from="Bit/TextureButton" to="Bit" method="_on_TextureButton_pressed"]
+[connection signal="timeout" from="Bit/Timer" to="Bit" method="_on_Timer_timeout"]

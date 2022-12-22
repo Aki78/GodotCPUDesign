@@ -8,7 +8,7 @@ onready var polyC = $CollisionPolygon2D
 onready var polyR = $ColorRect
 var current_index = 0
 var theta_before : int = 1000 #some randome number
-var steps = 15
+var steps = 15 # Steps for line angles so it isn't continuous
 var theta
 var bit
 var old_bit = true
@@ -42,15 +42,20 @@ func set_poly():
 		theta = deg2rad(theta_int)
 	var vec = abs(mouse_pos.distance_to(center1)) * Vector2(cos(theta), sin(theta))
 	theta_before = theta_int
+	center2 = vec + center1
+	
+	var poly = get_poly(center1, center2, vec, theta)
 
+	polyC.set_polygon(poly)
+	polyR.set_polygon(poly)
+	
+func get_poly(center1, center2, vec, theta):
 	var p1 = thickness*Vector2(cos(theta + PI/2), sin(theta + PI/2)) + center1
 	var p2 = thickness*Vector2(-cos(theta + PI/2), -sin(theta + PI/2)) + center1
-	center2 = vec + center1
 	var p3 = thickness*Vector2(cos(theta + PI/2), sin(theta + PI/2)) + center2
 	var p4 = thickness*Vector2(-cos(theta + PI/2), -sin(theta + PI/2)) + center2
 	poly = PoolVector2Array([p3,p1,p2,p4]) 
-	polyC.set_polygon(poly)
-	polyR.set_polygon(poly)
+	return poly
 
 func _physics_process(delta):
 	if get_index() == current_index:
