@@ -10,8 +10,8 @@ script = ExtResource( 1 )
 polygon = PoolVector2Array( 13, -1, 151, 106, 303, 269, 566, 199, 534, 60, 131, 10 )
 
 [node name="ColorRect" type="Polygon2D" parent="."]
-visible = false
 modulate = Color( 100, 1, 1, 1 )
 self_modulate = Color( 1.73, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( 2, 0 )
+color = Color( 49.71, 1, 1, 1 )
