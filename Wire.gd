@@ -27,9 +27,10 @@ func _input(event):
 	if get_index() == wire_index:
 		print("index", get_index())
 		print("current_wire_index", wire_index)
-		if event.is_action_pressed("new_wire") or event.is_action_pressed("escape"):
+		if event.is_action_pressed("escape"):
 			if get_child_count() > 0:
 				print("child couhnt:", get_child_count())
+				print("child couhnt:", line_index)
 				get_child(line_index - 1).queue_free() #erase last line
 		if event.is_action_pressed("left_click"):
 				
@@ -47,7 +48,8 @@ func _input(event):
 
 			for _i in get_children():
 				_i.current_index = line_index
-			line_index += 1
+			line_index = get_child_count() 
+#			line_index += 1
 
 func _physics_process(delta):
 	if old_bit == bit:
