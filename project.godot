@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Cpu Godot"
+run/main_scene="res://Node2D.tscn"
 config/icon="res://icon.png"
 
 [global]

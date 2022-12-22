@@ -10,15 +10,31 @@ var current_index = 0
 var theta_before : int = 1000 #some randome number
 var steps = 15
 var theta
+var bit
+var old_bit = true
+var group_name
 
 var poly : PoolVector2Array
 
 func _ready():
 	pass
 
-func init(last_center):
+func init(last_center, new_group_name):
 	center1 = last_center
+	group_name = new_group_name
 	
+
+func set_bit(newbit):
+	bit = newbit
+#	if old_bit != bit:
+	if bit:
+		$ColorRect.modulate.r = 0
+		$ColorRect.modulate.b = 255
+	else:
+		$ColorRect.modulate.r = 255
+		$ColorRect.modulate.b = 0
+	
+#	print(bit)
 
 func set_poly():
 	var mouse_pos = get_global_mouse_position()

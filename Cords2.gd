@@ -9,9 +9,17 @@ var theta
 var cord_index = 0
 var last_center
 var cable_index = 0
+var bit = false
+var group_name
 
 func _ready():
 	cord_index = 0
+	group_name = "cable" + str(get_index())
+	add_to_group(group_name)
+	
+
+func set_bit(new_bit):
+	bit = new_bit
 
 func _input(event):
 
@@ -32,7 +40,7 @@ func _input(event):
 				print("hit2")
 				last_center = get_global_mouse_position()
 			print(last_center)
-			cord2.init(last_center)
+			cord2.init(last_center, group_name)
 			cord2.thickness = thickness
 			print(last_center)
 
@@ -41,5 +49,7 @@ func _input(event):
 			cord_index += 1
 
 				
-
+func _physics_process(delta):
+	for _i in get_children():
+		_i.set_bit(bit)
 

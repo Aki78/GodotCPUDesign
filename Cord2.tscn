@@ -14,4 +14,4 @@ modulate = Color( 100, 1, 1, 1 )
 self_modulate = Color( 1.73, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( 2, 0 )
-color = Color( 49.71, 1, 1, 1 )
+color = Color( 49.71, 0, 50.29, 1 )
