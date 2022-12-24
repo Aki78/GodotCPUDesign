@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Wires.gd" type="Script" id=1]
+[ext_resource path="res://Delete.gd" type="Script" id=2]
 [ext_resource path="res://Switches.gd" type="Script" id=3]
 [ext_resource path="res://Label.gd" type="Script" id=4]
 
@@ -15,6 +16,8 @@ glow_hdr_threshold = 2.0
 glow_hdr_luminance_cap = 10.0
 glow_bicubic_upscale = true
 glow_high_quality = true
+
+[sub_resource type="CircleShape2D" id=2]
 
 [node name="Game" type="Node2D"]
 position = Vector2( 0, 1 )
@@ -34,3 +37,9 @@ script = ExtResource( 4 )
 
 [node name="Switches" type="Node2D" parent="."]
 script = ExtResource( 3 )
+
+[node name="Delete" type="Area2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="DeleteShape" type="CollisionShape2D" parent="Delete"]
+shape = SubResource( 2 )
