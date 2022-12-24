@@ -50,3 +50,4 @@ func free_empty_wires():
 			
 #func _process(delta):
 #	update_wire_index()
+

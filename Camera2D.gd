@@ -15,13 +15,11 @@ func _input(e):
 	if Input.is_action_pressed("zoomin") and zoom.x > 0.1:
 		zoom *= 0.9
 		$ModeLabel.rect_scale *= 0.9
-#		$ModeLabel.rect_position = offset + label_pos 
 		emit_signal("zoom_in")
 	if Input.is_action_pressed("zoomout") and zoom.x < 10:
 		emit_signal("zoom_out")
 		zoom *= 1.1
 		$ModeLabel.rect_scale *= 1.1
-#		$ModeLabel.rect_position = offset + label_pos 
 	if Input.is_action_pressed("middle_mouse"):
 		mouse_down = true
 	else:

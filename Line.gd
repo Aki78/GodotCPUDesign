@@ -14,8 +14,11 @@ var bit
 var old_bit = true
 var group_name
 var has_switch = false
+var grabbed = false
 
 var poly : PoolVector2Array
+
+signal grabbed
 
 func _ready():
 	add_to_group("switchable")
@@ -27,6 +30,7 @@ func init(last_center, new_group_name):
 	
 func set_bit(newbit):
 	bit = newbit
+
 #	if old_bit != bit:
 	if bit:
 		$ColorRect.modulate.r = 0
@@ -63,6 +67,10 @@ func get_poly(center1, center2, vec, theta):
 #	print("ADDING ALL SWITCHES!")
 #	get_tree().call_group(group_name, "add_switch")
 
+func set_all_bit(new_bit):
+	get_tree().call_group(group_name, "set_bit", new_bit)
+
+
 func add_switch():
 	has_switch = true
 
@@ -79,3 +87,9 @@ func _on_Line_area_entered(area):
 func _on_Line_area_exited(area):
 	if area.is_in_group("switch"):
 		has_switch = false
+
+func set_grab():
+	emit_signal("grabbed")
+	grabbed = true
+
+

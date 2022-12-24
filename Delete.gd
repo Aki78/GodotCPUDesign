@@ -5,6 +5,10 @@ func _input(event):
 	
 	if event.is_action_pressed("delete") and Singleton.mode == "normal":
 		Singleton.mode = "delete"
+	if event.is_action_pressed("grab") and Singleton.mode == "normal":
+		Singleton.mode = "grab"
+		for area in get_overlapping_areas():
+			area.set_grab()
 		
 	if event.is_action_pressed("left_click") and Singleton.mode == "delete":
 
@@ -16,7 +20,8 @@ func _input(event):
 				get_tree().call_group(area.group_name, "queue_free")
 	
 	
-
+func set_grab():
+	pass
 	
 
 func _process(delta):

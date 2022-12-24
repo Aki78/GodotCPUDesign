@@ -2,6 +2,7 @@ extends Area2D
 
 var bit = true
 var old_bit = false
+var grabbed = false
 
 func _ready():
 	add_to_group("switch")
@@ -10,13 +11,18 @@ func _ready():
 func _process(delta):
 	for area in get_overlapping_areas():
 		if area.is_in_group("wires"):
-			get_tree().call_group(area.group_name, "set_bit", bit)
+			area.set_all_bit(bit)
+#			get_tree().call_group(area.group_name, "set_bit", bit)
 #		if area.bit != bit:
 #			set_bit(area.bit)
 
 
 		set_color()
 
+
+func _input(event):
+	if event.is_action_pressed("escape"):
+		grabbed = false
 
 func _on_TextureButton_pressed():
 	toggle()
@@ -54,5 +60,9 @@ func _on_Timer_timeout():
 		toggle()
 		old_bit = bit
 	
-
+func set_grab():
+	grabbed = true
 	
+func _physics_process(delta):
+	if grabbed:
+		position = get_global_mouse_position()

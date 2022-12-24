@@ -14,6 +14,10 @@ var group_name
 var old_bit = true
 var has_switch = false
 
+var grabbed = false
+
+var grab_point
+
 func _ready():
 	line_index = 0
 	group_name = "wire" + str(get_index())
@@ -26,15 +30,19 @@ func set_bit(new_bit):
 	bit = new_bit
 
 func _input(event):
+	if event.is_action_pressed("escape"):
+		grabbed = false
 	if Singleton.mode != "wire":
 		return
 	if get_index() == wire_index:
 		print("index", get_index())
 		print("current_wire_index", wire_index)
 		if event.is_action_pressed("escape"):
+			grabbed = false
 			if get_child_count() > 0:
 				print("child couhnt:", get_child_count())
 				print("child couhnt:", line_index)
+
 				get_child(line_index - 1).queue_free() #erase last line
 #			else:
 #				queue_free()
@@ -51,6 +59,7 @@ func _input(event):
 			print(last_center)
 			line.init(last_center, group_name)
 			line.thickness = thickness
+			line.connect("grabbed", self, "on_grabbed")
 			print(last_center)
 
 			for _i in get_children():
@@ -70,4 +79,13 @@ func _physics_process(delta):
 	for _i in get_children():
 		_i.set_bit(bit)
 	old_bit = bit
+	
+func on_grabbed():
+	grabbed = true
+	grab_point = get_global_mouse_position()
+
+
+func _process(delta):
+	if grabbed:
+		position = get_global_mouse_position() - grab_point
 

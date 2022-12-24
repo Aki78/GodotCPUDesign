@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Wires.gd" type="Script" id=1]
 [ext_resource path="res://Delete.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Label.gd" type="Script" id=4]
 [ext_resource path="res://Camera2D.gd" type="Script" id=5]
 [ext_resource path="res://Game.gd" type="Script" id=6]
+[ext_resource path="res://Gate.gd" type="Script" id=7]
+[ext_resource path="res://Contact.gd" type="Script" id=8]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -21,6 +23,9 @@ glow_high_quality = true
 
 [sub_resource type="CircleShape2D" id=2]
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 7.25, 7.75 )
+
 [node name="Game" type="Node2D"]
 position = Vector2( 0, 1 )
 script = ExtResource( 6 )
@@ -34,10 +39,10 @@ script = ExtResource( 1 )
 [node name="Switches" type="Node2D" parent="."]
 script = ExtResource( 3 )
 
-[node name="Delete" type="Area2D" parent="."]
+[node name="MouseTip" type="Area2D" parent="."]
 script = ExtResource( 2 )
 
-[node name="DeleteShape" type="CollisionShape2D" parent="Delete"]
+[node name="MouseTipShape" type="CollisionShape2D" parent="MouseTip"]
 shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -50,3 +55,31 @@ margin_top = 239.0
 margin_right = -402.0
 margin_bottom = 253.0
 script = ExtResource( 4 )
+
+[node name="Gate" type="ColorRect" parent="."]
+margin_left = -20.0
+margin_top = -21.0
+margin_right = 20.0
+margin_bottom = 19.0
+script = ExtResource( 7 )
+
+[node name="Inp1" type="Area2D" parent="Gate"]
+script = ExtResource( 8 )
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Gate/Inp1"]
+position = Vector2( 8, 10 )
+shape = SubResource( 3 )
+
+[node name="Inp2" type="Area2D" parent="Gate"]
+script = ExtResource( 8 )
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Gate/Inp2"]
+position = Vector2( 8, 30 )
+shape = SubResource( 3 )
+
+[node name="Out" type="Area2D" parent="Gate"]
+script = ExtResource( 8 )
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Gate/Out"]
+position = Vector2( 32, 19 )
+shape = SubResource( 3 )
