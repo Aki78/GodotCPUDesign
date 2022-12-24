@@ -15,3 +15,6 @@ self_modulate = Color( 1.73, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( 2, 0 )
 color = Color( 49.71, 0, 50.29, 1 )
+
+[connection signal="area_entered" from="." to="." method="_on_Line_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_Line_area_exited"]

@@ -13,11 +13,13 @@ var theta
 var bit
 var old_bit = true
 var group_name
+var has_switch = false
 
 var poly : PoolVector2Array
 
 func _ready():
-	pass
+	add_to_group("switchable")
+	add_to_group("wires")
 
 func init(last_center, new_group_name):
 	center1 = last_center
@@ -57,6 +59,23 @@ func get_poly(center1, center2, vec, theta):
 	poly = PoolVector2Array([p3,p1,p2,p4]) 
 	return poly
 
+#func add_all_switch():
+#	print("ADDING ALL SWITCHES!")
+#	get_tree().call_group(group_name, "add_switch")
+
+func add_switch():
+	has_switch = true
+
 func _physics_process(delta):
 	if get_index() == current_index:
 		set_poly()
+
+
+func _on_Line_area_entered(area):
+	if area.is_in_group("switch"):
+		has_switch = true
+
+
+func _on_Line_area_exited(area):
+	if area.is_in_group("switch"):
+		has_switch = false
