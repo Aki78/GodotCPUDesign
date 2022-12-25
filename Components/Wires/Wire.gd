@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var Line = load("res://Line.tscn")
+onready var Line = load("res://Components/Wires/Line.tscn")
 
 var p1
 var p2
@@ -26,7 +26,6 @@ func _ready():
 	add_to_group("wires")
 	
 func set_bit(new_bit):
-#	print("setting bit")
 	bit = new_bit
 
 func _input(event):
@@ -35,13 +34,9 @@ func _input(event):
 	if Singleton.mode != "wire":
 		return
 	if get_index() == wire_index:
-		print("index", get_index())
-		print("current_wire_index", wire_index)
 		if event.is_action_pressed("escape"):
 			grabbed = false
 			if get_child_count() > 0:
-				print("child couhnt:", get_child_count())
-				print("child couhnt:", line_index)
 
 				get_child(line_index - 1).queue_free() #erase last line
 #			else:
@@ -54,13 +49,10 @@ func _input(event):
 			if len(get_children()) > 1:
 				last_center = get_child(line_index -1).center2
 			else:
-				print("hit2")
 				last_center = get_global_mouse_position()
-			print(last_center)
 			line.init(last_center, group_name)
 			line.thickness = thickness
 			line.connect("grabbed", self, "on_grabbed")
-			print(last_center)
 
 			for _i in get_children():
 				_i.current_index = line_index

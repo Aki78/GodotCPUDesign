@@ -19,6 +19,5 @@ func _on_mouse_exited():
 
 func _on_mouse_motion(event):
 	# Update the position of the Control node based on the mouse position
-	print("Hello")
 	if dragging:
 		rect_position = event.position

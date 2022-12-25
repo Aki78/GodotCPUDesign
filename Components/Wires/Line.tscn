@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Line.gd" type="Script" id=1]
+[ext_resource path="res://Components/Wires/Line.gd" type="Script" id=1]
 
 [node name="Line" type="Area2D"]
 position = Vector2( -2, 0 )

@@ -2,7 +2,7 @@ extends Node2D
 
 
 
-onready var Switch = preload("res://Switch.tscn")
+onready var Switch = preload("res://Components/Switches/Switch.tscn")
 
 var following = false
 
@@ -40,26 +40,13 @@ func create_switch():
 	add_child(switch)
 	var following = true
 	current_switch = switch
-
-#	add_switch_exists()
-		
-
-#func add_switch_exists():
-#	print("checking if switch exists")
-#	for area in current_switch.get_overlapping_areas():
-#		print(area)
-#		if area.has_method("add_all_switch"):
-#			print(area.has_switch)
-#			print("Adding swith")
-#			area.add_all_switch()
 	
 
 func _process(delta):
 	if following:
 		current_switch.position = get_global_mouse_position()
 		for _i in current_switch.get_overlapping_areas():
-			if "bit" in _i:
-#				print("bit exists")
+			if "bit" in _i and _i.is_in_group("wire"):
 				current_switch.set_bit(_i.bit)
 		
 		

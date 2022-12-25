@@ -1,14 +1,13 @@
 extends Node2D
 
 var wire_index = 0
-var Wire = load("res://Wire.tscn")
+var Wire = load("res://Components/Wires/Wire.tscn")
 
 func ready():
 	pass
 #	add_to_group("wires")
 
 func new_wire():
-	print("creating new wire ", wire_index)
 	var wire = Wire.instance()
 	add_child(wire)
 	update_wire_index()
@@ -44,9 +43,6 @@ func free_empty_wires():
 			_i.queue_free()
 	wire_index = len(get_children())
 	update_wire_index()
-#	print("new wire index:", wire_index)
-#	print("number of wires:", get_child_count())
-#	print("number of wires:", len(get_children()))
 			
 #func _process(delta):
 #	update_wire_index()

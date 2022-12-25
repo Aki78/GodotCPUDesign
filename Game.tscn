@@ -1,12 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Wires.gd" type="Script" id=1]
+[ext_resource path="res://Components/Wires/Wires.gd" type="Script" id=1]
 [ext_resource path="res://MouseTip.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Switches.gd" type="Script" id=3]
+[ext_resource path="res://Components/Switches/Switches.gd" type="Script" id=3]
 [ext_resource path="res://Label.gd" type="Script" id=4]
 [ext_resource path="res://Camera2D.gd" type="Script" id=5]
 [ext_resource path="res://Game.gd" type="Script" id=6]
-[ext_resource path="res://Gate.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/Gates/Gate.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/Gates/Gates.gd" type="Script" id=8]
+[ext_resource path="res://HelpLabel.gd" type="Script" id=9]
+[ext_resource path="res://Components/Switches/Switch.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -37,29 +40,14 @@ script = ExtResource( 3 )
 
 [node name="MouseTip" parent="Main" instance=ExtResource( 2 )]
 
-[node name="Camera2D" type="Camera2D" parent="Main"]
-current = true
-script = ExtResource( 5 )
+[node name="Gates" type="Node2D" parent="Main"]
+script = ExtResource( 8 )
 
-[node name="ModeLabel" type="Label" parent="Main/Camera2D"]
-margin_left = -442.0
-margin_top = 239.0
-margin_right = -402.0
-margin_bottom = 253.0
-script = ExtResource( 4 )
-
-[node name="HelpLabel" type="Label" parent="Main/Camera2D"]
-margin_left = -442.0
-margin_top = 239.0
-margin_right = -402.0
-margin_bottom = 253.0
-text = "Help: h"
-
-[node name="Gate" parent="Main" instance=ExtResource( 7 )]
+[node name="Gate" parent="Main/Gates" instance=ExtResource( 7 )]
 
 [node name="Help" type="Node2D" parent="."]
 
-[node name="Label" type="Label" parent="Help"]
+[node name="HelpLabel" type="Label" parent="Help"]
 margin_left = -227.0
 margin_top = -146.0
 margin_right = -24.0
@@ -70,3 +58,28 @@ switch mode: s
 delete mode: x, d
 
 "
+script = ExtResource( 9 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+script = ExtResource( 5 )
+
+[node name="ModeLabel" type="Label" parent="Camera2D"]
+margin_left = -442.0
+margin_top = 239.0
+margin_right = -402.0
+margin_bottom = 253.0
+script = ExtResource( 4 )
+
+[node name="HelpLabel" type="Label" parent="Camera2D"]
+margin_left = -442.0
+margin_top = 239.0
+margin_right = -402.0
+margin_bottom = 253.0
+text = "Help: h"
+
+[node name="Switch" parent="." instance=ExtResource( 10 )]
+position = Vector2( -291, -107 )
+
+[node name="Switch2" parent="." instance=ExtResource( 10 )]
+position = Vector2( -283, 114 )
