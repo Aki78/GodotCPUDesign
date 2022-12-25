@@ -30,14 +30,15 @@ func init(last_center, new_group_name):
 	
 func set_bit(newbit):
 	bit = newbit
+	Singleton.set_color(self)
 
 #	if old_bit != bit:
-	if bit:
-		$ColorRect.modulate.r = 0
-		$ColorRect.modulate.b = 255
-	else:
-		$ColorRect.modulate.r = 255
-		$ColorRect.modulate.b = 0
+#	if bit:
+#		$ColorRect.modulate.r = 0
+#		$ColorRect.modulate.b = 255
+#	else:
+#		$ColorRect.modulate.r = 255
+#		$ColorRect.modulate.b = 0
 
 func set_poly():
 	var mouse_pos = get_global_mouse_position()

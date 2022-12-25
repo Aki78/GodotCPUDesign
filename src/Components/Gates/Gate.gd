@@ -1,10 +1,10 @@
 extends Area2D
 
 var inp_text : String = "nand"
+
 var grabbed = false
 
 onready var out = $Areas/Outputs/Out
-
 
 onready var in1 = $Areas/Inputs/In1
 onready var in2 = $Areas/Inputs/In2
@@ -54,6 +54,7 @@ func set_shape():
 		
 func set_logic():
 	if inp_text == "nand":
+		print("nand")
 		out.bit = !(in1.bit and in2.bit)
 	elif inp_text == "and":
 		out.bit = (in1.bit and in2.bit)

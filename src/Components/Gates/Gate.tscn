@@ -54,24 +54,31 @@ position = Vector2( -29, -17.8897 )
 position = Vector2( -29, 17.8676 )
 
 [node name="In3" parent="Areas/Inputs" instance=ExtResource( 3 )]
+visible = false
 position = Vector2( -29, 17.8676 )
 
 [node name="In4" parent="Areas/Inputs" instance=ExtResource( 3 )]
+visible = false
 position = Vector2( -29, 17.8676 )
 
 [node name="In5" parent="Areas/Inputs" instance=ExtResource( 3 )]
+visible = false
 position = Vector2( -29, 17.8676 )
 
 [node name="In6" parent="Areas/Inputs" instance=ExtResource( 3 )]
+visible = false
 position = Vector2( -29, 17.8676 )
 
 [node name="In7" parent="Areas/Inputs" instance=ExtResource( 3 )]
+visible = false
 position = Vector2( -29, 17.8676 )
 
 [node name="In8" parent="Areas/Inputs" instance=ExtResource( 3 )]
+visible = false
 position = Vector2( -29, 17.8676 )
 
 [node name="InE" parent="Areas/Inputs" instance=ExtResource( 3 )]
+visible = false
 position = Vector2( -29, 17.8676 )
 
 [node name="Outputs" type="Node2D" parent="Areas"]
@@ -80,24 +87,31 @@ position = Vector2( -29, 17.8676 )
 position = Vector2( 28, -0.488968 )
 
 [node name="Out2" parent="Areas/Outputs" instance=ExtResource( 1 )]
+visible = false
 position = Vector2( 28, -0.488968 )
 
 [node name="Out3" parent="Areas/Outputs" instance=ExtResource( 1 )]
+visible = false
 position = Vector2( 28, -0.488968 )
 
 [node name="Out4" parent="Areas/Outputs" instance=ExtResource( 1 )]
+visible = false
 position = Vector2( 28, -0.488968 )
 
 [node name="Out5" parent="Areas/Outputs" instance=ExtResource( 1 )]
+visible = false
 position = Vector2( 28, -0.488968 )
 
 [node name="Out6" parent="Areas/Outputs" instance=ExtResource( 1 )]
+visible = false
 position = Vector2( 28, -0.488968 )
 
 [node name="Out7" parent="Areas/Outputs" instance=ExtResource( 1 )]
+visible = false
 position = Vector2( 28, -0.488968 )
 
 [node name="Out8" parent="Areas/Outputs" instance=ExtResource( 1 )]
+visible = false
 position = Vector2( 28, -0.488968 )
 
 [connection signal="text_changed" from="LineEdit" to="." method="_on_LineEdit_text_changed"]
