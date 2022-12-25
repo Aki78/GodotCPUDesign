@@ -160,13 +160,12 @@ delete mode: (delete components) x, d or delete\_key
 <!--All components of the game are uploaded to Python Anywhere server. This means our game is accessible to anyone anywhere. This also gave us a great understanding of how different systems interact with each other and what is possible with different servers. Many servers were tested, but failed due to compatibility issues.-->
 
 
-<!--#### Further Development Ideas-->
+## Further Development Plans
 
-<!--* Interpol  will be trained with machine learning.-->
-<!--* Improve the user experience.-->
-<!--* Enhance the aesthetic of the site.-->
-<!--* Mobile freindly version-->
-<!--* Better graphics-->
+* Fully Programmable Gates
+* Copy Paste
+* Bundlable logic
+* Better Graphics
 
 <!--[Back to top](#airport-heist)-->
 
