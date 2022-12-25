@@ -132,9 +132,6 @@
 
 <!--The decision tree below show all possible decisions the player can make and the benefits of each.-->
 
-<!--<p align="center">-->
-    <!--<img src="./Poster/tree_diagrams/decisiontree.png">-->
-<!--</p>-->
 
 <!--[Back to top](#airport-heist)-->
 
@@ -142,10 +139,6 @@
 
 <!--This diagram shows how our different files interact with each other. At the moment we are using Godot, a game-->
 <!--engine to run our game, python to run our backend, react for our website and SQL to store the game's data.-->
-
-<!--<p align="center">-->
-    <!--<img src="./Poster/tree_diagrams/project_diagram_readme.png">-->
-<!--</p>-->
 
 <!--[Back to top](#airport-heist)-->
 
