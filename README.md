@@ -37,24 +37,27 @@
 <!--- [Further Development Ideas](#further-development-ideas)-->
 
 <!--[Project information](#project-info)-->
+## Introduction
+A simple logic gate simulator.
 
-<!--## Introduction-->
+## Key Bindings
+You must be in normal mode in order to switch to different modes
 
-<!--### Abstract-->
+normal mode: esc, q or right\_click
 
-<!--This is a first semester group project held in 2022, IT engineering at Metropolia University of Applied Sciences,-->
-<!--by group 3. The goal is to practice groupwork in IT projects by making an online game using git, and -->
-<!--various full-stack technologies such as python, javascript, sql and related technologies. Our group goal was also to maximise the-->
-<!--learning experience by including extended technologies such as using a game engine and many other useful software to make the game-->
-<!--fun to play and visually pleasing.-->
+wire mode: (draw wires) w
+
+switch mode: (add switches) s
+
+input mode: (change logic type) i
+
+help mode: (help screen) h
+
+gate mode: (add logic gate) l
+
+delete mode: (delete components) x, d or delete\_key
 
 
-<!--### Introduction-->
-
-<!--This document specifies the design for the gameplay of Airport Heist. The key developers are Aki Morooka, Khai Cao,-->
-<!--Kiana Aghajani, Jenni Hallikas and Francesco Natanni. The Purpose of Airport Heist is to produce a fun and interactive-->
-<!--game, that satisfies the guidelines provided by software1. As well as producing an attractive and intuitive website that-->
-<!--satisfies the requirements of software2. Airport Heist is suitable for all ages.-->
 
 <!--[Back to top](#airport-heist)-->
 
