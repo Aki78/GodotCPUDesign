@@ -59,10 +59,6 @@ func _input(event):
 	if event.is_action_pressed("rotate_gate") and Singleton.mode == "normal":
 		Singleton.mode = "rotate"
 
-
-#		Singleton.mode = "normal"
-
-
 func _on_LineEdit_text_changed(new_text):
 	inp_text = new_text
 
