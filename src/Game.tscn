@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Components/Wires/Wires.gd" type="Script" id=1]
 [ext_resource path="res://MouseTip.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Components/Gates/Gates.gd" type="Script" id=8]
 [ext_resource path="res://HelpLabel.gd" type="Script" id=9]
 [ext_resource path="res://Components/Switches/Switch.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Contacts.gd" type="Script" id=11]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -50,6 +51,9 @@ position = Vector2( -291, -107 )
 
 [node name="Switch2" parent="Main" instance=ExtResource( 10 )]
 position = Vector2( -283, 114 )
+
+[node name="Contacts" type="Node2D" parent="Main"]
+script = ExtResource( 11 )
 
 [node name="Help" type="Node2D" parent="."]
 

@@ -63,9 +63,13 @@ func get_poly(center1, center2, vec, theta):
 	poly = PoolVector2Array([p3,p1,p2,p4]) 
 	return poly
 
-#func add_all_switch():
+func add_all_switch():
 #	print("ADDING ALL SWITCHES!")
-#	get_tree().call_group(group_name, "add_switch")
+	get_tree().call_group(group_name, "add_switch")
+func delete_all_switch():
+#	print("ADDING ALL SWITCHES!")
+	get_tree().call_group(group_name, "delete_switch")
+
 
 func set_all_bit(new_bit):
 	get_tree().call_group(group_name, "set_bit", new_bit)
@@ -73,10 +77,23 @@ func set_all_bit(new_bit):
 
 func add_switch():
 	has_switch = true
+	
+func delete_switch():
+	has_switch = false
 
 func _physics_process(delta):
 	if get_index() == current_index:
 		set_poly()
+	delete_all_switch()
+	for area in get_overlapping_areas():
+		if area.is_in_group("switch"):
+			add_all_switch()
+			set_all_bit(area.bit)
+#	for area in get_overlapping_areas():
+#		if area.is_in_group("contact"):
+#			area.bit = bit
+
+
 
 
 func _on_Line_area_entered(area):

@@ -4,7 +4,7 @@ onready var Line = load("res://Components/Wires/Line.tscn")
 
 var p1
 var p2
-var thickness : float = 0.5
+var thickness : float = 2
 var theta
 var line_index = 0
 var last_center
@@ -39,9 +39,6 @@ func _input(event):
 			if get_child_count() > 0:
 
 				get_child(line_index - 1).queue_free() #erase last line
-#			else:
-#				queue_free()
-#				wire_index -= 1
 		if event.is_action_pressed("left_click"):
 				
 			var line = Line.instance()
@@ -57,7 +54,6 @@ func _input(event):
 			for _i in get_children():
 				_i.current_index = line_index
 			line_index = get_child_count() 
-#			line_index += 1
 
 func add_switch():
 	has_switch = true

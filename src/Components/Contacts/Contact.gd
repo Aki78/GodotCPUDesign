@@ -4,28 +4,24 @@ var bit = true
 var old_bit = false
 var grabbed = false
 
+
 func _ready():
-	add_to_group("switch")
-	add_to_group("switchable")
+	add_to_group("contacts")
+	scale *= 0.2
 	
 func _process(delta):
 	for area in get_overlapping_areas():
 		if area.is_in_group("wires"):
-			area.set_all_bit(bit)
-#			get_tree().call_group(area.group_name, "set_bit", bit)
-#		if area.bit != bit:
-#			set_bit(area.bit)
-
-
+			if area.has_switch:
+				bit = area.bit
+			else:
+				area.set_all_bit(bit)
+#				area.set_all_bit(bit)
 		Singleton.set_color(self)
-
 
 func _input(event):
 	if event.is_action_pressed("escape"):
 		grabbed = false
-
-func _on_TextureButton_pressed():
-	toggle()
 	
 func set_bit(new_bit):
 	bit = new_bit
@@ -35,24 +31,20 @@ func toggle():
 		bit = false
 	else:
 		bit = true
-
-#func set_color():
-	#if !bit:
-		#modulate.r = 255
-		#modulate.b = 0
-	#else:
-		#modulate.r = 0
-		#modulate.b = 255
+#func set_grab():
+#	grabbed = true
 	
+#func _physics_process(delta):
+#	if grabbed:
+#		position = get_global_mouse_position()
 
-func _on_Timer_timeout():
-	if old_bit != bit:
-		toggle()
-		old_bit = bit
-	
+func _physics_process(delta):
+	if Singleton.mode == "grab" and grabbed:
+		position = get_global_mouse_position() + Vector2(0, 10)
+	else:
+		grabbed = false
+
+
 func set_grab():
 	grabbed = true
 	
-func _physics_process(delta):
-	if grabbed:
-		position = get_global_mouse_position()

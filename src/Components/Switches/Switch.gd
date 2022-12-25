@@ -9,9 +9,9 @@ func _ready():
 	add_to_group("switchable")
 	
 func _process(delta):
-	for area in get_overlapping_areas():
-		if area.is_in_group("wires"):
-			area.set_all_bit(bit)
+#	for area in get_overlapping_areas():
+#		if area.is_in_group("switch"):
+#			area.has_switch = true
 #			get_tree().call_group(area.group_name, "set_bit", bit)
 #		if area.bit != bit:
 #			set_bit(area.bit)
@@ -35,15 +35,6 @@ func toggle():
 		bit = false
 	else:
 		bit = true
-
-#func set_color():
-	#if !bit:
-		#modulate.r = 255
-		#modulate.b = 0
-	#else:
-		#modulate.r = 0
-		#modulate.b = 255
-	
 
 func _on_Timer_timeout():
 	if old_bit != bit:
