@@ -38,7 +38,7 @@
 
 <!--[Project information](#project-info)-->
 ## Introduction
-A simple logic gate simulator in Godot.
+A simple logic gate simulator in Godot Version 3.5.
 
 ## Key Bindings
 You must be in normal mode in order to switch to different modes
