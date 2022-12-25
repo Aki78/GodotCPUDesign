@@ -1,21 +1,52 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Components/Gates/Out.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/Gates/Gate.gd" type="Script" id=2]
 [ext_resource path="res://Components/Gates/Inp.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/Gates/LineEdit.gd" type="Script" id=4]
 
-[node name="Gate" type="ColorRect"]
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Gate" type="Area2D"]
+position = Vector2( 20, 21 )
+scale = Vector2( 2.04512, 2.04512 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="GateRect" type="ColorRect" parent="."]
 margin_left = -20.0
 margin_top = -21.0
 margin_right = 20.0
 margin_bottom = 19.0
-script = ExtResource( 2 )
+color = Color( 0.494118, 0.0392157, 0.423529, 1 )
 
 [node name="In1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 7, 9 )
+position = Vector2( -29, -17.8897 )
 
 [node name="In2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 7, 33 )
+position = Vector2( -29, 17.8676 )
 
 [node name="Out" parent="." instance=ExtResource( 1 )]
-position = Vector2( 32, 21 )
+position = Vector2( 28, -0.488968 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -18.5808
+margin_top = -37.1616
+margin_right = 21.4192
+margin_bottom = -23.1616
+rect_scale = Vector2( 0.918914, 0.859675 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Hello"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+margin_left = -17.6028
+margin_top = -4.88968
+margin_right = 40.3972
+margin_bottom = 19.1103
+rect_scale = Vector2( 0.621638, 0.438506 )
+text = "nor"
+script = ExtResource( 4 )
+
+[connection signal="text_changed" from="LineEdit" to="." method="_on_LineEdit_text_changed"]
