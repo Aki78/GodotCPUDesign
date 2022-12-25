@@ -47,6 +47,7 @@ margin_right = 40.3972
 margin_bottom = 19.1103
 rect_scale = Vector2( 0.621638, 0.438506 )
 text = "nor"
+align = 1
 script = ExtResource( 4 )
 
 [connection signal="text_changed" from="LineEdit" to="." method="_on_LineEdit_text_changed"]
