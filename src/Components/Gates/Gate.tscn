@@ -22,15 +22,6 @@ margin_right = 20.0
 margin_bottom = 19.0
 color = Color( 0.494118, 0.0392157, 0.423529, 1 )
 
-[node name="In1" parent="." instance=ExtResource( 3 )]
-position = Vector2( -29, -17.8897 )
-
-[node name="In2" parent="." instance=ExtResource( 3 )]
-position = Vector2( -29, 17.8676 )
-
-[node name="Out" parent="." instance=ExtResource( 1 )]
-position = Vector2( 28, -0.488968 )
-
 [node name="Label" type="Label" parent="."]
 margin_left = -18.5808
 margin_top = -37.1616
@@ -49,5 +40,18 @@ rect_scale = Vector2( 0.621638, 0.438506 )
 text = "nor"
 align = 1
 script = ExtResource( 4 )
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="In1" parent="Areas" instance=ExtResource( 3 )]
+position = Vector2( -29, -17.8897 )
+
+[node name="In2" parent="Areas" instance=ExtResource( 3 )]
+position = Vector2( -29, 17.8676 )
+
+[node name="Out" parent="Areas" instance=ExtResource( 1 )]
+position = Vector2( 28, -0.488968 )
 
 [connection signal="text_changed" from="LineEdit" to="." method="_on_LineEdit_text_changed"]

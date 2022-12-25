@@ -12,7 +12,7 @@ func _input(event):
 		create_gate()
 		following = true
 	if Singleton.mode == "gate" and event.is_action_pressed("left_click"):
-		for inout in current_gate.get_children():
+		for inout in current_gate.get_node("Areas").get_children():
 			for area in inout.get_overlapping_areas():
 				if area.is_in_group("switch"):
 					return
@@ -35,7 +35,7 @@ func create_gate():
 
 func _process(delta):
 	if following:
-		current_gate.rect_position = get_global_mouse_position()
+		current_gate.position = get_global_mouse_position()
 		#for _i in current_gate.get_overlapping_areas():
 			#if "bit" in _i and _i.is_in_group("wire"):
 				#current_gate.set_bit(_i.bit)
