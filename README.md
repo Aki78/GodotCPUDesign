@@ -1,4 +1,4 @@
-# Airport Heist
+# Example
 
 <p align="center">
     <img src="./logic_example.gif">
