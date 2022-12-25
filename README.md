@@ -43,19 +43,13 @@ A simple logic gate simulator in Godot.
 ## Key Bindings
 You must be in normal mode in order to switch to different modes
 
-normal mode: esc, q or right\_click
-
-wire mode: (draw wires) w
-
-switch mode: (add switches) s
-
-input mode: (change logic type) i
-
-help mode: (help screen) h
-
-gate mode: (add logic gate) l
-
-delete mode: (delete components) x, d or delete\_key
+* normal mode: esc, q or right\_click
+* wire mode: (draw wires) w
+* switch mode: (add switches) s
+* input mode: (change logic type) i
+* help mode: (help screen) h
+* gate mode: (add logic gate) l
+* delete mode: (delete components) x, d or delete\_key
 
 
 
