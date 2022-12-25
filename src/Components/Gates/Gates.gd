@@ -12,12 +12,12 @@ func _input(event):
 		create_gate()
 		following = true
 	if Singleton.mode == "gate" and event.is_action_pressed("left_click"):
-		for inout in current_gate.get_node("Areas").get_children():
-			for area in inout.get_overlapping_areas():
-				if area.is_in_group("switch"):
-					return
-				if area.is_in_group("wires"):
-						return
+#		for inout in current_gate.get_node("Areas").get_children():
+#			for area in inout.get_overlapping_areas():
+#				if area.is_in_group("switch"):
+#					return
+#				if area.is_in_group("wires"):
+#						return
 		create_gate()
 
 	if event.is_action_pressed("escape") and Singleton.mode == "gate":
