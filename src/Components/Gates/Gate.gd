@@ -27,7 +27,7 @@ func _ready():
 	set_shape()
 	$CollisionShape.scale.y = 2
 	$CollisionShape.scale.x = 2
-	$CollisionShape.position.y = position.y - 22
+	$CollisionShape.global_position.y = position.y
 
 func set_shape():
 	$ErrorMessage.text = ""
@@ -75,7 +75,8 @@ func set_logic():
 func rescale():
 	$CollisionShape.scale.y = 8
 	$CollisionShape.scale.x = 2
-	$CollisionShape.position.y = position.y + 38
+	$CollisionShape.global_position.y = position.y  #+ 38
+	$GateRect.rect_global_position.y = position.y - 2*$GateRect.rect_size.y
 	$GateRect.rect_scale.y = 4
 	
 	for i in range(7):
@@ -92,21 +93,23 @@ func rescale():
 	$Areas/Inputs.add_child(inE)
 
 	for i in range(outputs.get_child_count()):
-		inputs.get_child(i).position.x = position.x - 50.5
-		inputs.get_child(i).position.y = i*position.y - 13.5
+		inputs.get_child(i).global_position.x = position.x -30.5
+		inputs.get_child(i).global_position.y = position.y + i*20 - 70
+#		inputs.get_child(i).global_position.y = i*position.y
 		inputs.get_child(i).show()
-		outputs.get_child(i).position.x = position.x + 9
-		outputs.get_child(i).position.y = i*position.y - 13.5
+		outputs.get_child(i).global_position.x = position.x + 30.5
+		outputs.get_child(i).global_position.y = position.y + i*20 - 70
 		outputs.get_child(i).show()
-	inE.position.x = position.x -21.5
-	inE.position.y = position.y + 128
+	inE.global_position.x = position.x
+	inE.global_position.y = position.y + 90
 	inE.show()
 
 func unscale():
 	$CollisionShape.scale.y = 2
 	$CollisionShape.scale.x = 2
-	$CollisionShape.position.y = position.y - 22
+
 	$GateRect.rect_scale.y = 1
+	$CollisionShape.global_position.y = $GateRect.rect_global_position.y  + $GateRect.rect_size.y/2
 
 	for i in range(8 + 1):
 		if i > 2:
@@ -117,11 +120,16 @@ func unscale():
 			outputs.get_node("Out"+str(i)).queue_free()
 	if inputs.get_node("InE"):
 		inputs.get_node("InE").queue_free()
-	out.position.y = position.y - 22
+	out.global_position.y = position.y 
 	
 
 func _physics_process(delta):
 	set_logic()
+#	if get_index() == 1:
+	$Icon.global_position = position
+	print(position)
+	print($Icon.position)
+#	$Icon.position.y = sqrt(position.y)
 	if Singleton.mode == "grab" and grabbed:
 		position = get_global_mouse_position() + Vector2(0, 10)
 	elif Singleton.mode == "rotate":
