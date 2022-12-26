@@ -1,6 +1,6 @@
 extends Area2D
 
-var bit = false
+var bit = true
 
 func _physics_process(delta):
 	for area in get_overlapping_areas():

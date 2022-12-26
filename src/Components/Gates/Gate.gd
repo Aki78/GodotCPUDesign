@@ -27,11 +27,10 @@ func _ready():
 	$CollisionShape.position.y = position.y - 22
 
 func set_shape():
-	$Label.text = ""
+	$ErrorMessage.text = ""
 	if not in2.is_visible():
 		set_two()
 	if inp_text == "not":
-		out.bit = !in1.bit
 		set_not()
 	if inp_text == "nand":
 		pass
@@ -50,12 +49,13 @@ func set_shape():
 		byte_mem()
 	else:
 		unscale()
-		$Label.text = "error"
+		$ErrorMessage.text = "error"
 		
 func set_logic():
 	if inp_text == "nand":
 		print("nand")
 		out.bit = !(in1.bit and in2.bit)
+		print("nand", out.bit)
 	elif inp_text == "and":
 		out.bit = (in1.bit and in2.bit)
 	elif inp_text == "or":
@@ -135,7 +135,6 @@ func byte_mem():
 	if inE.bit:
 		for i in range(outputs.get_child_count()):
 			outputs.get_child(i).bit = inputs.get_child(i).bit
-		
 
 func _input(event):
 	

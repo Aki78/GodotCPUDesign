@@ -32,14 +32,6 @@ func set_bit(newbit):
 	bit = newbit
 	Singleton.set_color(self)
 
-#	if old_bit != bit:
-#	if bit:
-#		$ColorRect.modulate.r = 0
-#		$ColorRect.modulate.b = 255
-#	else:
-#		$ColorRect.modulate.r = 255
-#		$ColorRect.modulate.b = 0
-
 func set_poly():
 	var mouse_pos = get_global_mouse_position()
 	var theta_deg = rad2deg(get_angle_to(mouse_pos - center1))
@@ -90,11 +82,13 @@ func _physics_process(delta):
 		if area.is_in_group("switch"):
 			add_all_switch()
 			set_all_bit(area.bit)
+		if area.is_in_group("out"):
+#			print("hit", area.bit, bit)
+#			add_all_switch()
+			set_all_bit(area.bit)
 #	for area in get_overlapping_areas():
 #		if area.is_in_group("contact"):
 #			area.bit = bit
-
-
 
 
 func _on_Line_area_entered(area):

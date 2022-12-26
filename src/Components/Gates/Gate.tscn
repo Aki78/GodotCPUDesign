@@ -22,14 +22,14 @@ margin_right = 20.0
 margin_bottom = 19.0
 color = Color( 0.494118, 0.0392157, 0.423529, 0.478431 )
 
-[node name="Label" type="Label" parent="."]
+[node name="ErrorMessage" type="Label" parent="."]
 margin_left = -18.5808
 margin_top = -37.1616
 margin_right = 21.4192
 margin_bottom = -23.1616
 rect_scale = Vector2( 0.918914, 0.859675 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Hello"
+text = "Error"
 
 [node name="LineEdit" type="LineEdit" parent="."]
 margin_left = -17.6028
