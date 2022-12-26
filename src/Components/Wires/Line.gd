@@ -13,7 +13,7 @@ var theta
 var bit
 var old_bit = true
 var group_name
-var has_switch = false
+var has_absolute = false
 var grabbed = false
 
 var poly : PoolVector2Array
@@ -56,35 +56,35 @@ func get_poly(center1, center2, vec, theta):
 	poly = PoolVector2Array([p3,p1,p2,p4]) 
 	return poly
 
-func add_all_switch():
+func add_all_absolutes():
 #	print("ADDING ALL SWITCHES!")
-	get_tree().call_group(group_name, "add_switch")
-func delete_all_switch():
+	get_tree().call_group(group_name, "add_absolute")
+func delete_all_absolutes():
 #	print("ADDING ALL SWITCHES!")
-	get_tree().call_group(group_name, "delete_switch")
+	get_tree().call_group(group_name, " delete_absolute")
 
 
 func set_all_bit(new_bit):
 	get_tree().call_group(group_name, "set_bit", new_bit)
 
 
-func add_switch():
-	has_switch = true
+func add_absolute():
+	has_absolute = true
 	
-func delete_switch():
-	has_switch = false
+func delete_absolute():
+	has_absolute = false
 
 func _physics_process(delta):
 	if get_index() == current_index:
 		set_poly()
-	delete_all_switch()
+	delete_all_absolutes()
 	for area in get_overlapping_areas():
-		if area.is_in_group("switch"):
-			add_all_switch()
+		if area.is_in_group("absolute"):
+			add_all_absolutes()
 			set_all_bit(area.bit)
 		if area.is_in_group("out"):
 #			print("hit", area.bit, bit)
-#			add_all_switch()
+#			add_all_absolutes()
 			set_all_bit(area.bit)
 #	for area in get_overlapping_areas():
 #		if area.is_in_group("contact"):
@@ -92,13 +92,13 @@ func _physics_process(delta):
 
 
 func _on_Line_area_entered(area):
-	if area.is_in_group("switch"):
-		has_switch = true
+	if area.is_in_group("absolute"):
+		has_absolute = true
 
 
 func _on_Line_area_exited(area):
-	if area.is_in_group("switch"):
-		has_switch = false
+	if area.is_in_group("absolute"):
+		has_absolute = false
 
 func set_grab():
 	emit_signal("grabbed")

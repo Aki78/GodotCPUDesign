@@ -5,6 +5,7 @@ var bit = false
 func _ready():
 	if name[0]=="O" and name[1] =="u":
 		add_to_group("out")
+		add_to_group("absolute")
 
 #func _physics_process(delta):
 #	for area in get_overlapping_areas():

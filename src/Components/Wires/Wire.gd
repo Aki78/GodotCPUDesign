@@ -12,7 +12,7 @@ var wire_index = 0
 var bit = false
 var group_name
 var old_bit = true
-var has_switch = false
+var has_absolute = false
 
 var grabbed = false
 
@@ -56,10 +56,10 @@ func _input(event):
 			line_index = get_child_count() 
 
 func add_switch():
-	has_switch = true
+	has_absolute = true
 	
 func delete_switch():
-	has_switch = false
+	has_absolute = false
 
 func _physics_process(delta):
 #	if old_bit == bit:

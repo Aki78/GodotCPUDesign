@@ -12,7 +12,7 @@ func _ready():
 func _process(delta):
 	for area in get_overlapping_areas():
 		if area.is_in_group("wires"):
-			if area.has_switch:
+			if area.has_absolute:
 				bit = area.bit
 			else:
 				area.set_all_bit(bit)

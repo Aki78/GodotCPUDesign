@@ -7,16 +7,9 @@ var grabbed = false
 func _ready():
 	add_to_group("switch")
 	add_to_group("switchable")
+	add_to_group("absolute")
 	
 func _process(delta):
-#	for area in get_overlapping_areas():
-#		if area.is_in_group("switch"):
-#			area.has_switch = true
-#			get_tree().call_group(area.group_name, "set_bit", bit)
-#		if area.bit != bit:
-#			set_bit(area.bit)
-
-
 		Singleton.set_color(self)
 
 
