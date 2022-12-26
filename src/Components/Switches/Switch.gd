@@ -12,7 +12,6 @@ func _ready():
 func _process(delta):
 		Singleton.set_color(self)
 
-
 func _input(event):
 	if event.is_action_pressed("escape"):
 		grabbed = false

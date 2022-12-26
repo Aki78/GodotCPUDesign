@@ -6,10 +6,13 @@ var grabbed = false
 
 onready var out = $Areas/Outputs/Out
 
+onready var OutNode = preload("res://Components/Gates/Out.tscn")
+onready var InNode = preload("res://Components/Gates/Inp.tscn")
+
 onready var in1 = $Areas/Inputs/In1
 onready var in2 = $Areas/Inputs/In2
 
-onready var inE = $Areas/Inputs/InE
+#onready var inE = $Areas/Inputs/InE
 var inputs 
 var outputs
 var in1_pos
@@ -74,6 +77,19 @@ func rescale():
 	$CollisionShape.scale.x = 2
 	$CollisionShape.position.y = position.y + 38
 	$GateRect.rect_scale.y = 4
+	
+	for i in range(7):
+		var new_out = OutNode.instance()
+		new_out.name = "Out"+str(i+2)
+		new_out.add_to_group("absolute")
+		$Areas/Outputs.add_child(new_out)
+	for i in range(6):
+		var new_in = InNode.instance()
+		new_in.name = "In"+str(i+3)
+		$Areas/Inputs.add_child(new_in)
+	var inE = InNode.instance()
+	inE.name = "InE"
+	$Areas/Inputs.add_child(inE)
 
 	for i in range(outputs.get_child_count()):
 		inputs.get_child(i).position.x = position.x - 50.5
@@ -92,12 +108,15 @@ func unscale():
 	$CollisionShape.position.y = position.y - 22
 	$GateRect.rect_scale.y = 1
 
-	for i in range(outputs.get_child_count()):
-		if i > 0:
-			if i > 1:
-				inputs.get_child(i).hide()
-			outputs.get_child(i).hide()
-	inputs.get_child(inputs.get_child_count() - 1).hide()
+	for i in range(8 + 1):
+		if i > 2:
+			if inputs.get_node("In"+str(i)):
+				inputs.get_node("In"+str(i)).queue_free()
+#		if outputs.name == "Out"+str(i):
+		if outputs.get_node("Out"+str(i)):
+			outputs.get_node("Out"+str(i)).queue_free()
+	if inputs.get_node("InE"):
+		inputs.get_node("InE").queue_free()
 	out.position.y = position.y - 22
 	
 
@@ -129,12 +148,13 @@ func bit_mem():
 	if in2.bit:
 		bit = in1.bit
 	return bit
-		
 
 func byte_mem():
-	if inE.bit:
-		for i in range(outputs.get_child_count()):
-			outputs.get_child(i).bit = inputs.get_child(i).bit
+	var inE = $Areas/Inputs.get_node("InE")
+	if inE:
+		if inE.bit:
+			for i in range(outputs.get_child_count()):
+				outputs.get_child(i).bit = inputs.get_child(i).bit
 
 func _input(event):
 	
