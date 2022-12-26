@@ -1,4 +1,7 @@
 extends Area2D
+#Switch node, that toggles between on and off.
+#Group 'absolute' means that only one can exist
+#on a wire, otherwise there will be a conflic.
 
 var bit = true
 var old_bit = false

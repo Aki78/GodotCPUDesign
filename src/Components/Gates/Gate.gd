@@ -1,4 +1,5 @@
 extends Area2D
+#Semi-programmable gates
 
 var inp_text : String = "nand"
 
@@ -48,8 +49,9 @@ func set_shape():
 	elif inp_text == "bit":
 		pass
 	elif inp_text == "byte":
-		rescale()
-		byte_mem()
+		rescale8()
+	elif inp_text == "enable":
+		rescale8()
 	else:
 		unscale()
 		$ErrorMessage.text = "error"
@@ -71,8 +73,10 @@ func set_logic():
 		out.bit = bit_mem()
 	elif inp_text == "byte":
 		byte_mem()
+	elif inp_text == "enable":
+		byte_enable()
 
-func rescale():
+func rescale8():
 	$CollisionShape.scale.y = 8
 	$CollisionShape.scale.x = 2
 	$CollisionShape.global_position.y = position.y  #+ 38
@@ -121,7 +125,6 @@ func unscale():
 	if inputs.get_node("InE"):
 		inputs.get_node("InE").queue_free()
 	out.global_position.y = position.y 
-	
 
 func _physics_process(delta):
 	set_logic()
@@ -164,8 +167,18 @@ func byte_mem():
 			for i in range(outputs.get_child_count()):
 				outputs.get_child(i).bit = inputs.get_child(i).bit
 
+func byte_enable():
+	var inE = $Areas/Inputs.get_node("InE")
+	if inE:
+		if inE.bit:
+			for i in range(outputs.get_child_count()):
+				outputs.get_child(i).bit = inputs.get_child(i).bit
+		else:
+			for i in range(outputs.get_child_count()):
+				outputs.get_child(i).bit = false
+			
+
 func _input(event):
-	
 	if event.is_action_pressed("rotate_gate") and Singleton.mode == "normal":
 		Singleton.mode = "rotate"
 

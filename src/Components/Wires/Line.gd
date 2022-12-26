@@ -1,4 +1,9 @@
 class_name CordLine extends Area2D
+#The most important and the only node that can
+#transfer bits between objects. Wires are ther only
+#object that can propagate information, because there
+#could cause conflicts, if other objects start transfering
+#information.
 
 #center of the left square
 var center1 : Vector2

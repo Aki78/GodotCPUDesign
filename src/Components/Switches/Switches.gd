@@ -1,5 +1,7 @@
 extends Node2D
-
+#Node for controlling Switches
+#Only responsible for adding switches and 
+#Moving switches on grab
 
 
 onready var Switch = preload("res://Components/Switches/Switch.tscn")
@@ -7,9 +9,6 @@ onready var Switch = preload("res://Components/Switches/Switch.tscn")
 var following = false
 
 var current_switch
-
-func _ready():
-	pass 
 
 func _input(event):
 	if event.is_action_pressed("add_switch") and Singleton.mode == "normal":

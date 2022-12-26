@@ -1,4 +1,6 @@
 extends Node2D
+#Node that is responsible for controlling
+#addition of the gates
 
 onready var Gate = preload("res://Components/Gates/Gate.tscn")
 
@@ -12,12 +14,6 @@ func _input(event):
 		create_gate()
 		following = true
 	if Singleton.mode == "gate" and event.is_action_pressed("left_click"):
-#		for inout in current_gate.get_node("Areas").get_children():
-#			for area in inout.get_overlapping_areas():
-#				if area.is_in_group("switch"):
-#					return
-#				if area.is_in_group("wires"):
-#						return
 		create_gate()
 
 	if event.is_action_pressed("escape") and Singleton.mode == "gate":
@@ -36,7 +32,3 @@ func create_gate():
 func _process(delta):
 	if following:
 		current_gate.position = get_global_mouse_position()
-		#for _i in current_gate.get_overlapping_areas():
-			#if "bit" in _i and _i.is_in_group("wire"):
-				#current_gate.set_bit(_i.bit)
-		

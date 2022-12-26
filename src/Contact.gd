@@ -1,4 +1,5 @@
 extends Area2D
+#Node for gate inputs.
 
 var bit = true
 
