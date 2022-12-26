@@ -8,7 +8,7 @@ var thickness : float = 2
 var theta
 var line_index = 0
 var last_center
-var wire_index = 0
+var current_wire_index = 0
 var bit = false
 var group_name
 var old_bit = true
@@ -20,10 +20,14 @@ var grab_point
 
 func _ready():
 	line_index = 0
-	group_name = "wire" + str(get_index())
-	add_to_group(group_name)
+#	group_name = "wire" + str(current_wire_index) # str(get_index())
+
 	add_to_group("switchable")
 	add_to_group("wires")
+	
+func init(new_index):
+	group_name = "wire" + str(new_index) # str(current_wire_index) # str(get_index())
+	add_to_group(group_name)
 	
 func set_bit(new_bit):
 	bit = new_bit
@@ -33,7 +37,7 @@ func _input(event):
 		grabbed = false
 	if Singleton.mode != "wire":
 		return
-	if get_index() == wire_index:
+	if is_in_group("wire" + str(current_wire_index)):
 		if event.is_action_pressed("escape"):
 			grabbed = false
 			if get_child_count() > 0:
@@ -74,6 +78,7 @@ func on_grabbed():
 
 
 func _process(delta):
+	print(group_name)
 	if grabbed:
 		position = get_global_mouse_position() - grab_point
 
