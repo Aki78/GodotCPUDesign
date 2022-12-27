@@ -51,6 +51,7 @@ You must be in normal mode in order to switch to different modes
 * gate mode: (add logic gate) l
 * delete mode: (delete components) x, d or delete\_key
 * rotate mode: (rotate a gate) r
+* save: ctrl+s
 
 
 
