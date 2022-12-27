@@ -15,6 +15,7 @@ var bit = false
 var group_name
 var old_bit = true
 var has_absolute = false
+var overlapping_absolute = false
 
 var grabbed = false
 
@@ -38,24 +39,22 @@ func _input(event):
 		grabbed = false
 	if Singleton.mode != "wire":
 		return
-#	if is_in_group("wire" + str(wire_index)):
 	print(wire_index, " ", Singleton.current_wire_index)
 	if wire_index == Singleton.current_wire_index:
-#		print("Is in group")
 		if event.is_action_pressed("escape"):
 			grabbed = false
 			if get_child_count() > 0:
 				Singleton.current_wire_index += 1
 				get_child(current_line_index).queue_free() #erase last line when escape
+
+		if overlapping_absolute:
+			return
 		if event.is_action_pressed("left_click"):
 			print("left click")
 				
 			var line = Line.instance()
 			add_child(line)
 			if len(get_children()) > 1:
-#				print(get_children(), current_wire_index, " ", current_line_index)
-				#Magic?
-#				current_line_index = get_child_count()
 				print("undexes", current_line_index, get_child_count())
 				current_line_index = get_child_count() -1
 				last_center = get_child(current_line_index - 1).center2
@@ -68,8 +67,6 @@ func _input(event):
 			for _i in get_children():
 				_i.current_line_index = current_line_index
 			current_line_index = get_child_count() - 1
-#			print(current_wire_index)
-#			line_index += 1
 
 func add_switch():
 	has_absolute = true
@@ -78,12 +75,19 @@ func delete_switch():
 	has_absolute = false
 
 func _physics_process(delta):
+#	if get_child_count() > 0:
+#		for area in get_child(current_line_index).get_overlapping_areas():
+#			print(area)
+#			if area.is_in_group("absolute"):
+#				overlapping_absolute = true
+#			else:
+#				overlapping_absolute = false
 	print(current_line_index)
 	
 	if get_child_count() > 0 and wire_index == Singleton.current_wire_index:
 		get_child(current_line_index).update_last_line()
-	if old_bit == bit:
-		return
+#	if old_bit == bit:
+#		return
 	for _i in get_children():
 		_i.set_bit(bit)
 	old_bit = bit
