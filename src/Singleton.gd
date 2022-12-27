@@ -10,6 +10,8 @@ var state = {"wires" : [], "current_wire_index":0, "switches": [], "gates": []}
 
 var current_wire_index = 0
 
+var gate_type = "nand"
+
 func set_color(node):
 	if !node.bit:
 		node.modulate.r = 255
@@ -71,4 +73,8 @@ func save():
 func _input(event):
 	if event.is_action_pressed("save"):
 		save()
+
+
+func copy_gate(new_type):
+	gate_type = new_type
 

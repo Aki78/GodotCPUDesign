@@ -45,3 +45,4 @@ func load_data(state):
 		var gate = Gate.instance()
 		add_child(gate)
 		gate.load_data(_i)
+		

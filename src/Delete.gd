@@ -28,6 +28,7 @@ func _input(event):
 	if event.is_action_pressed("escape"):
 		$ColorRect.hide()
 		$ColorRect2.hide()
+
 	
 func set_grab():
 	pass

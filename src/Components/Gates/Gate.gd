@@ -22,13 +22,16 @@ var bit = true
 
 func _ready():
 	add_to_group("gate")
+	inp_text = Singleton.gate_type
+	$LineEdit.text = inp_text
 	in1_pos = in1.position
 	inputs = get_node("Areas").get_node("Inputs")
 	outputs = get_node("Areas").get_node("Outputs")
-	set_shape()
+
 	$CollisionShape.scale.y = 2
 	$CollisionShape.scale.x = 2
 	$CollisionShape.global_position.y = position.y
+	set_shape()
 
 func set_shape():
 	$ErrorMessage.text = ""
@@ -175,6 +178,10 @@ func byte_enable():
 func _input(event):
 	if event.is_action_pressed("rotate_gate") and Singleton.mode == "normal":
 		Singleton.mode = "rotate"
+	if event.is_action_pressed("copy"):
+		for area in get_overlapping_areas():
+			if area.name  == "MouseTip":
+				Singleton.copy_gate(inp_text)
 
 func _on_LineEdit_text_changed(new_text):
 	inp_text = new_text
