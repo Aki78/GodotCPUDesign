@@ -35,6 +35,7 @@ func init(last_center, new_group_name):
 	group_name = new_group_name
 	
 func set_bit(newbit):
+
 	bit = newbit
 	if old_bit != newbit:
 		Singleton.set_color(self)
@@ -84,15 +85,17 @@ func update_last_line():
 	if get_index() == current_line_index:
 		set_poly()
 		
-func _physics_process(delta):
+func _process(delta):
 	delete_all_absolutes()
 	for area in get_overlapping_areas():
 		if area.is_in_group("absolute"):
 			add_all_absolutes()
 			set_all_bit(area.bit)
+			return
 		if area.is_in_group("out"):
 			add_all_absolutes()
 			set_all_bit(area.bit)
+			return
 
 	for area in get_overlapping_areas():
 		if area.is_in_group("contact"):

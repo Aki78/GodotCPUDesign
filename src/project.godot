@@ -32,6 +32,8 @@ Singleton="*res://Singleton.gd"
 
 glow=false
 bloom=false
+memory=false
+mem=false
 
 [gui]
 
@@ -144,6 +146,10 @@ copy={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":89,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[memory]
+
+limits/message_queue/max_size_kb=524288
 
 [physics]
 

@@ -6,6 +6,7 @@ var file_path
 var _file
 
 var state = {"wires" : [], "current_wire_index":0, "switches": [], "gates": []}
+var command_stack = [0,0]
 
 
 var current_wire_index = 0
@@ -73,6 +74,14 @@ func save():
 func _input(event):
 	if event.is_action_pressed("save"):
 		save()
+	if event is InputEventKey and event.pressed:
+		if event.scancode != KEY_ENTER and event.scancode != KEY_SHIFT:
+			print(event.scancode)
+			command_stack[1]=command_stack[0]
+			command_stack[0] = event.scancode
+			if command_stack[1]== KEY_Z and command_stack[0]==KEY_Z:
+				save()
+				get_tree().quit()
 
 
 func copy_gate(new_type):

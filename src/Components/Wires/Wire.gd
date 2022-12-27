@@ -102,7 +102,6 @@ func save():
 	for _i in get_children():
 		wire_info.children.append(
 			{
-				"node": line_path,
 				"bit": _i.bit,
 				"polyC_poly":var2str(_i.polyC.polygon),
 				"polyR_poly":var2str(_i.polyR.polygon),
@@ -115,7 +114,7 @@ func save():
 	return wire_info
 	
 func load_data(children):
-	pass
+#	pass
 	wire_index = children.wire_index 
 	group_name = children.group_name
 	var ind = 0
