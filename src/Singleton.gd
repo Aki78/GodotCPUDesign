@@ -5,6 +5,8 @@ var file_name
 var file_path
 var _file
 
+var current_wire_index = 0
+
 func set_color(node):
 	if !node.bit:
 		node.modulate.r = 255

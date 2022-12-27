@@ -35,10 +35,7 @@ func init(last_center, new_group_name):
 	group_name = new_group_name
 	
 func set_bit(newbit):
-#	print("Setting a bit")
-#	print(bit, " ", newbit)
 	bit = newbit
-#	print(bit, " ", newbit)
 	Singleton.set_color(self)
 
 func set_poly():
@@ -73,7 +70,6 @@ func delete_all_absolutes():
 
 
 func set_all_bit(new_bit):
-#	print("group_names: ", group_name, " ", line_index)
 	get_tree().call_group(group_name, "set_bit", new_bit)
 
 func add_absolute():
@@ -82,18 +78,17 @@ func add_absolute():
 func delete_absolute():
 	has_absolute = false
 
-func _physics_process(delta):
+func update_last_line():
 	print(get_index(), " ", current_line_index)
 	if get_index() == current_line_index:
 		set_poly()
+		
+func _physics_process(delta):
 	delete_all_absolutes()
 	for area in get_overlapping_areas():
 		if area.is_in_group("absolute"):
-#			print("SEtting absolute", area.bit)
-#			print(bit)
 			add_all_absolutes()
 			set_all_bit(area.bit)
-#			print(bit)
 		if area.is_in_group("out"):
 			add_all_absolutes()
 			set_all_bit(area.bit)
