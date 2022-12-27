@@ -6,7 +6,6 @@ func _ready():
 	
 
 func _input(event):
-	
 	if event.is_action_pressed("delete") and Singleton.mode == "normal":
 		Singleton.mode = "delete"
 		$ColorRect.show()
@@ -18,12 +17,14 @@ func _input(event):
 			area.set_grab()
 		
 	if event.is_action_pressed("left_click") and Singleton.mode == "delete":
-
 		for area in get_overlapping_areas():
 			if area.is_in_group("switch"):
 				area.queue_free()
 			if area.is_in_group("wires"):
 				get_tree().call_group(area.group_name, "queue_free")
+			if area.is_in_group("gate"):
+				print(area)
+				area.queue_free()
 	if event.is_action_pressed("escape"):
 		$ColorRect.hide()
 		$ColorRect2.hide()

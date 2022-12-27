@@ -19,31 +19,31 @@ func set_color(node):
 		node.modulate.b = 255
 
 func init():
+	print(OS.get_user_data_dir())
 	file_name = str(OS.get_cmdline_args())
 #	file_name = "test.gdlg"
 	if file_name:
 		file_name = file_name.replace("[","")
 		file_name = file_name.replace("]","")
 	print(file_name)
-	file_name = "buffer.gdlg"
 	if !file_name:
 #		push_error("NO FILE GIVEN")
-		printerr("Must provide a .gdlg file to store data.")
-		file_name = "buffer.gdlg"
-		file_path = "/home/aki/Documents/buffer.gdlg"
-		get_tree().quit()
+		#printerr("Must provide a .gdlg file to store data.")
+		file_path = "user://save_state.gdlg"
+		file_name = "save_state.gdlg"
+		#get_tree().quit()
 	else:
 		print(file_name)
 		var extension_name = file_name.split(".")
 		if extension_name[len(extension_name) - 1] != "gdlg":
 			push_error("FILE EXTENSION NOT gdlg")
-			printerr("Must provide a .gdlg file to store data.")
+			printerr("Must provide a .gdlg file to store data. you provided " + file_name)
 			get_tree().quit()
 	var output = []
 	var exit_code = OS.execute("realpath", [file_name], true, output)
 	_file = File.new()
-#	file_path = output[0].replace("\n","")
-	file_path = "/home/aki/Documents/buffer.gdlg"
+	#file_path = output[0].replace("\n","")
+	#file_path = "/home/aki/Documents/buffer.gdlg"
 	_file.open(file_path, _file.READ)
 	var data = parse_json(_file.get_as_text())
 	print("Saving")

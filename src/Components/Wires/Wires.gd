@@ -38,6 +38,7 @@ func save():
 func load_data(state):
 	if !state:
 		return
+	print(state)
 	Singleton.current_wire_index =state.current_wire_index
 	for _i in state.wires:
 		var wire = Wire.instance()

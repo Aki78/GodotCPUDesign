@@ -28,6 +28,10 @@ func _input(event):
 		Singleton.mode = "normal"
 		get_child(get_child_count() - 1).queue_free()
 		following = false
+	if event.is_action_pressed("save") and Singleton.mode == "switch":
+		Singleton.mode = "normal"
+		get_child(get_child_count() - 1).queue_free()
+		following = false
 		
 
 func create_switch():

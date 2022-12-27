@@ -184,7 +184,13 @@ func set_grab():
 	grabbed = true
 	
 func save():
-	return var2str(position)
+	return [$LineEdit.text,var2str(position)]
 
 func load_data(data):
-	position = str2var(data)
+	position = str2var(data[1])
+	$LineEdit.text = data[0]
+	inp_text = data[0]
+	set_shape()
+
+
+
