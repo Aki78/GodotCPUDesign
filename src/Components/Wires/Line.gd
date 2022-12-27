@@ -11,8 +11,8 @@ var center2 : Vector2
 var thickness : float = 5
 onready var polyC = $CollisionPolygon2D
 onready var polyR = $ColorRect
-var current_wire_index = 0
 var line_index = 0
+var current_line_index = 0
 var theta_before : int = 1000 #some randome number
 var steps = 15 # Steps for line angles so it isn't continuous
 var theta
@@ -83,7 +83,8 @@ func delete_absolute():
 	has_absolute = false
 
 func _physics_process(delta):
-	if get_index() == current_wire_index:
+	print(get_index(), " ", current_line_index)
+	if get_index() == current_line_index:
 		set_poly()
 	delete_all_absolutes()
 	for area in get_overlapping_areas():

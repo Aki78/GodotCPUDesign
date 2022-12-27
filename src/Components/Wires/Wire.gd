@@ -38,11 +38,11 @@ func _input(event):
 	if Singleton.mode != "wire":
 		return
 	if is_in_group("wire" + str(current_wire_index)):
+#		print("Is in group")
 		if event.is_action_pressed("escape"):
 			grabbed = false
 			if get_child_count() > 0:
-
-				get_child(current_line_index -1).queue_free() #erase last line when escape
+				get_child(current_line_index).queue_free() #erase last line when escape
 		if event.is_action_pressed("left_click"):
 			print("left click")
 				
@@ -51,9 +51,10 @@ func _input(event):
 			if len(get_children()) > 1:
 				print(get_children(), current_wire_index, " ", current_line_index)
 				#Magic?
-				print(line_index, get_child_count())
-#				current_line_index = get_child_count() 
-				last_center = get_child(current_line_index -1).center2
+#				current_line_index = get_child_count()
+				print("undexes", current_line_index, get_child_count())
+				current_line_index = get_child_count() -1
+				last_center = get_child(current_line_index - 1).center2
 			else:
 				last_center = get_global_mouse_position()
 			line.init(last_center, group_name)
@@ -61,8 +62,8 @@ func _input(event):
 			line.connect("grabbed", self, "on_grabbed")
 			#Update wires index to all lines
 			for _i in get_children():
-				_i.current_wire_index = current_wire_index
-			current_line_index = get_child_count()
+				_i.current_line_index = current_line_index
+			current_line_index = get_child_count() - 1
 			print(current_wire_index)
 #			line_index += 1
 
