@@ -19,13 +19,11 @@ func set_color(node):
 		node.modulate.b = 255
 
 func init():
-	print(OS.get_user_data_dir())
 	file_name = str(OS.get_cmdline_args())
 #	file_name = "test.gdlg"
 	if file_name:
 		file_name = file_name.replace("[","")
 		file_name = file_name.replace("]","")
-	print(file_name)
 	if !file_name:
 #		push_error("NO FILE GIVEN")
 		#printerr("Must provide a .gdlg file to store data.")
@@ -33,7 +31,6 @@ func init():
 		file_name = "save_state.gdlg"
 		#get_tree().quit()
 	else:
-		print(file_name)
 		var extension_name = file_name.split(".")
 		if extension_name[len(extension_name) - 1] != "gdlg":
 			push_error("FILE EXTENSION NOT gdlg")
@@ -46,7 +43,6 @@ func init():
 	#file_path = "/home/aki/Documents/buffer.gdlg"
 	_file.open(file_path, _file.READ)
 	var data = parse_json(_file.get_as_text())
-	print("Saving")
 	var main_node = get_tree().get_root().get_node("Game").get_node("Main")
 	var wires_node = main_node.get_node("Wires")
 	var switches_node = main_node.get_node("Switches")
@@ -58,7 +54,6 @@ func init():
 	_file.close()
 
 func save():
-	print("Saving")
 	var main_node = get_tree().get_root().get_node("Game").get_node("Main")
 	var wires_node = main_node.get_node("Wires")
 	var switches_node = main_node.get_node("Switches")

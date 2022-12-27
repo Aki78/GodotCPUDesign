@@ -81,7 +81,6 @@ func delete_absolute():
 	has_absolute = false
 
 func update_last_line():
-	print(get_index(), " ", current_line_index)
 	if get_index() == current_line_index:
 		set_poly()
 		
