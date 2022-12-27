@@ -159,7 +159,6 @@ You must be in normal mode in order to switch to different modes
 ## Further Development Plans
 
 * Fully Programmable Gates
-* Copy Paste
 * Bundlable logic
 * Better Graphics
 
