@@ -36,7 +36,9 @@ func init(last_center, new_group_name):
 	
 func set_bit(newbit):
 	bit = newbit
-	Singleton.set_color(self)
+	if old_bit != newbit:
+		Singleton.set_color(self)
+	old_bit = newbit
 
 func set_poly():
 	var mouse_pos = get_global_mouse_position()

@@ -109,14 +109,14 @@ func save():
 				"group_name":_i.group_name,
 				"center2": var2str(_i.center2),
 				"center1": var2str(_i.center1),
-				"wire_index": wire_index
+				"wire_index": wire_index - 1
 			}
 		)
 	return wire_info
 	
 func load_data(children):
 	pass
-	wire_index = children.wire_index
+	wire_index = children.wire_index 
 	group_name = children.group_name
 	var ind = 0
 	for _i in children.children:

@@ -44,4 +44,5 @@ func load_data(state):
 		add_child(wire)
 		wire.init()
 		wire.load_data(_i)
+	Singleton.current_wire_index += 1
 
