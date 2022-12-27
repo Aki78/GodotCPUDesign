@@ -78,7 +78,6 @@ func on_grabbed():
 
 
 func _process(delta):
-	print(group_name)
 	if grabbed:
 		position = get_global_mouse_position() - grab_point
 

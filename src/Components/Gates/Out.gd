@@ -10,7 +10,7 @@ func _ready():
 		modulate.a = 0.5
 
 func _process(delta):
-	print("out: ", bit)
-	print(get_overlapping_areas())
+	
+	
 	Singleton.set_color(self)
 		

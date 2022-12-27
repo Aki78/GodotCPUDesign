@@ -58,9 +58,7 @@ func set_shape():
 		
 func set_logic():
 	if inp_text == "nand":
-		print("nand")
 		out.bit = !(in1.bit and in2.bit)
-		print("nand", out.bit)
 	elif inp_text == "and":
 		out.bit = (in1.bit and in2.bit)
 	elif inp_text == "or":
@@ -130,8 +128,6 @@ func _physics_process(delta):
 	set_logic()
 #	if get_index() == 1:
 	$Icon.global_position = position
-	print(position)
-	print($Icon.position)
 #	$Icon.position.y = sqrt(position.y)
 	if Singleton.mode == "grab" and grabbed:
 		position = get_global_mouse_position() + Vector2(0, 10)
@@ -139,8 +135,6 @@ func _physics_process(delta):
 		for area in get_overlapping_areas():
 			if area.name == "MouseTip":
 				var theta = get_angle_to(get_global_mouse_position())
-				print(theta)
-				rotate(theta)
 	else:
 		grabbed = false
 		

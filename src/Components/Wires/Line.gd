@@ -62,10 +62,8 @@ func get_poly(center1, center2, vec, theta):
 	return poly
 
 func add_all_absolutes():
-#	print("ADDING ALL SWITCHES!")
 	get_tree().call_group(group_name, "add_absolute")
 func delete_all_absolutes():
-#	print("ADDING ALL SWITCHES!")
 	get_tree().call_group(group_name, " delete_absolute")
 
 
@@ -88,7 +86,6 @@ func _physics_process(delta):
 			add_all_absolutes()
 			set_all_bit(area.bit)
 		if area.is_in_group("out"):
-#			print("hit", area.bit, bit)
 #			add_all_absolutes()
 			set_all_bit(area.bit)
 #	for area in get_overlapping_areas():

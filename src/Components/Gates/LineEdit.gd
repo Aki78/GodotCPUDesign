@@ -15,6 +15,6 @@ func _input(event):
 #		Singleton.mode = "normal"
 
 func make_editability(e):
-	print("making editable")
+	
 	editable = e
 

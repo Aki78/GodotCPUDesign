@@ -21,7 +21,6 @@ func _input(event):
 
 		for area in get_overlapping_areas():
 			if area.is_in_group("switch"):
-				print("deleting", area)
 				area.queue_free()
 			if area.is_in_group("wires"):
 				get_tree().call_group(area.group_name, "queue_free")
