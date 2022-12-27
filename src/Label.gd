@@ -6,7 +6,7 @@ onready var center = OS.get_window_size()/2
 var mode = " mode"
 
 func _ready():
-	text = "Normal Mode"
+	text = "normal Mode"
 
 
 

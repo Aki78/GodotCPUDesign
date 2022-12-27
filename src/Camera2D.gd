@@ -15,19 +15,24 @@ func ready():
 
 func _input(e):
 	if Input.is_action_pressed("zoomin") and zoom.x > 0.1:
-		zoom *= 0.9
-		$ModeLabel.rect_scale *= 0.9
-		$HelpLabel.rect_scale *= 0.9
+		zoom_all(0.9)
 		emit_signal("zoom_in")
 	if Input.is_action_pressed("zoomout") and zoom.x < 10:
 		emit_signal("zoom_out")
-		zoom *= 1.1
-		$ModeLabel.rect_scale *= 1.1
-		$HelpLabel.rect_scale *= 1.1
+		zoom_all(1.1)
 	if Input.is_action_pressed("middle_mouse"):
 		mouse_down = true
 	else:
 		mouse_down = false
+
+func zoom_all(zoom_val):
+	zoom *= zoom_val
+	$ModeLabel.rect_scale *= zoom_val
+	$HelpLabel.rect_scale *= zoom_val
+func reset_zoom():
+	zoom = Vector2(1,1)
+	$ModeLabel.rect_scale = Vector2(1,1)
+	$HelpLabel.rect_scale = Vector2(1,1)
 
 func _process(delta):
 	var mouse_position_now = get_global_mouse_position()

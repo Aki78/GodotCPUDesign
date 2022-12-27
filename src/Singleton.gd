@@ -74,15 +74,32 @@ func save():
 func _input(event):
 	if event.is_action_pressed("save"):
 		save()
+	if mode != "normal":
+		return
 	if event is InputEventKey and event.pressed:
 		if event.scancode != KEY_ENTER and event.scancode != KEY_SHIFT:
 			print(event.scancode)
 			command_stack[1]=command_stack[0]
 			command_stack[0] = event.scancode
+			print(KEY_COLON, " ", event.scancode, " " , KEY_Q)
+			print(command_stack)
 			if command_stack[1]== KEY_Z and command_stack[0]==KEY_Z:
 				save()
 				get_tree().quit()
-
+			if command_stack[1]== KEY_SEMICOLON and command_stack[0]==KEY_Q:
+#				save()
+				print(KEY_COLON, " ", event.scancode)
+				get_tree().quit()
+			if command_stack[1]== KEY_SEMICOLON and command_stack[0]==KEY_W:
+				save()
+				print(KEY_COLON, " ", event.scancode)
+				print("Saved")
+				Singleton.mode = "normal"
+			if command_stack[1]== KEY_G and command_stack[0]==KEY_G:
+				get_tree().get_root().get_node("Game").get_node("Camera2D").offset = Vector2(0,0)
+				get_tree().get_root().get_node("Game").get_node("Camera2D").reset_zoom()
+				Singleton.mode = "normal"
+				command_stack = [0,0]
 
 func copy_gate(new_type):
 	gate_type = new_type

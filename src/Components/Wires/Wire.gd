@@ -132,7 +132,8 @@ func load_data(children):
 		line.center1 = str2var(_i.center1)
 		ind += 1
 #	get_child(get_child_count() -1).queue_free()
-	last_center = get_child(get_child_count() -1).center2
+	if get_child(get_child_count() -1):
+		last_center = get_child(get_child_count() -1).center2
 #
 	
 
