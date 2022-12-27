@@ -34,3 +34,8 @@ func set_grab():
 
 func _physics_process(delta):
 	position = get_global_mouse_position()
+#	print(get_overlapping_areas())
+func _on_MouseTip_area_entered(area):
+	if "current_wire_index" in area:
+		print(area, " ", area.get_index(), " ", area.current_wire_index)
+	

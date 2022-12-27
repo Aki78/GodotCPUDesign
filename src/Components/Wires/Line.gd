@@ -11,11 +11,12 @@ var center2 : Vector2
 var thickness : float = 5
 onready var polyC = $CollisionPolygon2D
 onready var polyR = $ColorRect
-var current_index = 0
+var current_wire_index = 0
+var line_index = 0
 var theta_before : int = 1000 #some randome number
 var steps = 15 # Steps for line angles so it isn't continuous
 var theta
-var bit
+var bit = false
 var old_bit = true
 var group_name
 var has_absolute = false
@@ -34,7 +35,10 @@ func init(last_center, new_group_name):
 	group_name = new_group_name
 	
 func set_bit(newbit):
+#	print("Setting a bit")
+#	print(bit, " ", newbit)
 	bit = newbit
+#	print(bit, " ", newbit)
 	Singleton.set_color(self)
 
 func set_poly():
@@ -67,9 +71,10 @@ func delete_all_absolutes():
 	get_tree().call_group(group_name, " delete_absolute")
 
 
-func set_all_bit(new_bit):
-	get_tree().call_group(group_name, "set_bit", new_bit)
 
+func set_all_bit(new_bit):
+#	print("group_names: ", group_name, " ", line_index)
+	get_tree().call_group(group_name, "set_bit", new_bit)
 
 func add_absolute():
 	has_absolute = true
@@ -78,19 +83,23 @@ func delete_absolute():
 	has_absolute = false
 
 func _physics_process(delta):
-	if get_index() == current_index:
+	if get_index() == current_wire_index:
 		set_poly()
 	delete_all_absolutes()
 	for area in get_overlapping_areas():
 		if area.is_in_group("absolute"):
+#			print("SEtting absolute", area.bit)
+#			print(bit)
 			add_all_absolutes()
 			set_all_bit(area.bit)
+#			print(bit)
 		if area.is_in_group("out"):
-#			add_all_absolutes()
+			add_all_absolutes()
 			set_all_bit(area.bit)
-#	for area in get_overlapping_areas():
-#		if area.is_in_group("contact"):
-#			area.bit = bit
+
+	for area in get_overlapping_areas():
+		if area.is_in_group("contact"):
+			area.bit = bit
 
 
 func _on_Line_area_entered(area):

@@ -25,3 +25,5 @@ margin_right = 32.0
 margin_bottom = 13.0
 rect_rotation = -45.0
 rect_scale = Vector2( 0.522903, 0.522903 )
+
+[connection signal="area_entered" from="." to="." method="_on_MouseTip_area_entered"]

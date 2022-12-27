@@ -18,7 +18,7 @@ var inputs
 var outputs
 var in1_pos
 
-var bit = false
+var bit = true
 
 func _ready():
 	add_to_group("gate")

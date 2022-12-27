@@ -1,7 +1,7 @@
 extends Area2D
 #Node for gate outputs.
 
-var bit = false
+var bit = true
 
 func _ready():
 	if name[0]=="O" and name[1] =="u":
