@@ -42,3 +42,10 @@ func set_grab():
 func _physics_process(delta):
 	if grabbed:
 		position = get_global_mouse_position()
+
+func save():
+	return var2str(position)
+
+func load_data(data):
+	
+	position = str2var(data)

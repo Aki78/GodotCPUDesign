@@ -44,5 +44,15 @@ func _process(delta):
 		for _i in current_switch.get_overlapping_areas():
 			if "bit" in _i and _i.is_in_group("wire"):
 				current_switch.set_bit(_i.bit)
-		
-		
+
+func save():
+	for _i in get_children():
+		Singleton.state.switches.append(_i.save())
+
+func load_data(state):
+	if !state:
+		return
+	for _i in state.switches:
+		var switch = Switch.instance()
+		add_child(switch)
+		switch.load_data(_i)

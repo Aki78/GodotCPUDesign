@@ -183,4 +183,8 @@ func _on_LineEdit_text_changed(new_text):
 func set_grab():
 	grabbed = true
 	
+func save():
+	return var2str(position)
 
+func load_data(data):
+	position = str2var(data)

@@ -5,6 +5,9 @@ var file_name
 var file_path
 var _file
 
+var state = {"wires" : [], "current_wire_index":0, "switches": [], "gates": []}
+
+
 var current_wire_index = 0
 
 func set_color(node):
@@ -46,14 +49,24 @@ func init():
 	print("Saving")
 	var main_node = get_tree().get_root().get_node("Game").get_node("Main")
 	var wires_node = main_node.get_node("Wires")
-	wires_node.load_data(data)
+	var switches_node = main_node.get_node("Switches")
+	var gates_node = main_node.get_node("Gates")
+	if data:
+		wires_node.load_data(data)
+		switches_node.load_data(data)
+		gates_node.load_data(data)
 	_file.close()
 
 func save():
 	print("Saving")
 	var main_node = get_tree().get_root().get_node("Game").get_node("Main")
 	var wires_node = main_node.get_node("Wires")
-	var my_text = JSON.print(wires_node.save())
+	var switches_node = main_node.get_node("Switches")
+	var gates_node = main_node.get_node("Gates")
+	wires_node.save()
+	switches_node.save()
+	gates_node.save()
+	var my_text = JSON.print(state)
 	_file.open(file_path, _file.WRITE)
 	assert(_file.is_open())
 	_file.store_string(my_text)

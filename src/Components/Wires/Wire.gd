@@ -39,7 +39,6 @@ func _input(event):
 		grabbed = false
 	if Singleton.mode != "wire":
 		return
-	print(wire_index, " ", Singleton.current_wire_index)
 	if wire_index == Singleton.current_wire_index:
 		if event.is_action_pressed("escape"):
 			grabbed = false
@@ -50,12 +49,10 @@ func _input(event):
 		if overlapping_absolute:
 			return
 		if event.is_action_pressed("left_click"):
-			print("left click")
 				
 			var line = Line.instance()
 			add_child(line)
 			if len(get_children()) > 1:
-				print("undexes", current_line_index, get_child_count())
 				current_line_index = get_child_count() -1
 				last_center = get_child(current_line_index - 1).center2
 			else:
@@ -75,14 +72,13 @@ func delete_switch():
 	has_absolute = false
 
 func _physics_process(delta):
+	pass
 #	if get_child_count() > 0:
 #		for area in get_child(current_line_index).get_overlapping_areas():
-#			print(area)
 #			if area.is_in_group("absolute"):
 #				overlapping_absolute = true
 #			else:
 #				overlapping_absolute = false
-	print(current_line_index)
 	
 	if get_child_count() > 0 and wire_index == Singleton.current_wire_index:
 		get_child(current_line_index).update_last_line()
@@ -136,7 +132,6 @@ func load_data(children):
 		line.center2 = str2var(_i.center2)
 		line.center1 = str2var(_i.center1)
 		ind += 1
-		print(get_child_count())
 #	get_child(get_child_count() -1).queue_free()
 	last_center = get_child(get_child_count() -1).center2
 #

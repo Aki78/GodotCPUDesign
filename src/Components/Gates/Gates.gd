@@ -32,3 +32,16 @@ func create_gate():
 func _process(delta):
 	if following:
 		current_gate.position = get_global_mouse_position()
+
+
+func save():
+	for _i in get_children():
+		Singleton.state.gates.append(_i.save())
+
+func load_data(state):
+	if !state:
+		return
+	for _i in state.gates:
+		var gate = Gate.instance()
+		add_child(gate)
+		gate.load_data(_i)
