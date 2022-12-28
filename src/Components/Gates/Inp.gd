@@ -8,7 +8,7 @@ func _ready():
 
 func _process(delta):
 	Singleton.set_color(self)
-	print(get_overlapping_areas(), bit )
+#	print(get_overlapping_areas(), bit )
 		
 
 func set_bit(new_bit):

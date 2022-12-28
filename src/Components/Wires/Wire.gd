@@ -80,16 +80,8 @@ func _process(delta):
 		position = get_global_mouse_position() - grab_point
 
 func on_send_bit(new_bit):
-	if Singleton.count % 100 == 0:
-		print("new bit is AAAAAA ", new_bit)
 	for _i in get_children():
 		_i.set_bit(new_bit)
-
-func set_bit(new_bit):
-	if Singleton.count % 100 == 0:
-		print("new bit is AAAAAA ", new_bit)
-#	for _i in get_children():
-#		_i.set_bit(new_bit)
 
 func save():
 	var wire_info = {"append_to":"Wires", "children":[], "wire_index": wire_index ,"group_name":group_name}

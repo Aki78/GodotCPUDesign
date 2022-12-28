@@ -38,8 +38,6 @@ func init(last_center, new_group_name):
 	group_name = new_group_name
 	
 func set_bit(newbit):
-	if Singleton.count % 100 == 0:
-		print("setbit")
 
 	bit = newbit
 	if old_bit != newbit:	
@@ -87,7 +85,6 @@ func update_last_line():
 		
 func _physics_process(delta):
 	if Singleton.count % 100 == 0: # to not call so often
-		print(bit)
 		delete_absolute()
 		overlapping_absolute_nodes = []
 		for area in get_overlapping_areas():
