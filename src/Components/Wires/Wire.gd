@@ -101,7 +101,8 @@ func save():
 				"group_name":_i.group_name,
 				"center2": var2str(_i.center2),
 				"center1": var2str(_i.center1),
-				"wire_index": wire_index - 1
+				"wire_index": wire_index - 1,
+				"bit": _i.bit
 			}
 		)
 	return wire_info
@@ -122,9 +123,12 @@ func load_data(children):
 		line.add_to_group(group_name)
 		line.center2 = str2var(_i.center2)
 		line.center1 = str2var(_i.center1)
+		line.bit = _i.bit
 		ind += 1
 		line.connect("send_bit",self,"on_send_bit")
 		line.connect("grabbed", self, "on_grabbed")
+		Singleton.set_color(line)
 #	get_child(get_child_count() -1).queue_free()
+
 	if get_child(get_child_count() -1):
 		last_center = get_child(get_child_count() -1).center2

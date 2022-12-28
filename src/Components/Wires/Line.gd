@@ -29,13 +29,7 @@ var poly : PoolVector2Array
 signal grabbed
 
 func _ready():
-	if Singleton.count % 100 == 0:
-		for area in get_overlapping_areas():
-			if area.is_in_group("absolute"):
-				set_all_bit(area.bit)
-				print(area)
 
-		Singleton.set_color(self)
 		add_to_group("switchable")
 		add_to_group("wires")
 
@@ -76,11 +70,6 @@ func get_poly(center1, center2, vec, theta):
 	poly = PoolVector2Array([p3,p1,p2,p4]) 
 	return poly
 
-func add_all_absolutes():
-	get_tree().call_group(group_name, "add_absolute")
-func delete_all_absolutes():
-	get_tree().call_group(group_name, " delete_absolute")
-
 signal send_bit(new_bit)
 
 func set_all_bit(new_bit):
@@ -114,17 +103,6 @@ func _physics_process(delta):
 		if area.is_in_group("absolute"):
 			set_all_bit(area.bit)
 			return
-
-
-
-func _on_Line_area_entered(area):
-	if area.is_in_group("absolute"):
-		has_absolute = true
-
-
-func _on_Line_area_exited(area):
-	if area.is_in_group("absolute"):
-		has_absolute = false
 
 func set_grab():
 	emit_signal("grabbed")

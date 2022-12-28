@@ -50,8 +50,9 @@ func _physics_process(delta):
 		position = get_global_mouse_position()
 
 func save():
-	return var2str(position)
+	return [var2str(position), bit]
 
 func load_data(data):
 	
-	position = str2var(data)
+	position = str2var(data[0])
+	bit = data[1]
