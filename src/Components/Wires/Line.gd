@@ -83,8 +83,8 @@ func update_last_line():
 	if get_index() == current_line_index:
 		set_poly()
 		
-func _physics_process(delta):
-	if Singleton.count % 100 == 0: # to not call so often
+func _process(delta):
+	if Singleton.count % 10 == 0: # to not call so often
 		delete_absolute()
 		overlapping_absolute_nodes = []
 		for area in get_overlapping_areas():

@@ -35,7 +35,7 @@ func push_message(message, dissapear = true, message_color="w"):
 		yield(global_message.get_child(0), "timeout")
 		global_message.text = ""
 	if message_color == "r":
-		global_message.modulate.r = 255;
+		global_message.modulate.r = 1;
 	else:
 		global_message.modulate.r = 0;
 
@@ -43,12 +43,12 @@ func set_color(node):
 #	if count %10 == 0:
 #		print(node.bit, "node bit")
 		if !node.bit:
-			node.modulate.r = 255
+			node.modulate.r = 4
 			node.modulate.b = 0
 			node.modulate.g = 0
 		else:
 			node.modulate.r = 0
-			node.modulate.b = 255
+			node.modulate.b = 4
 			node.modulate.g = 0
 
 func init():
