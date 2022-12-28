@@ -62,7 +62,6 @@ func set_shape():
 func set_logic():
 	if inp_text == "nand":
 		out.bit = !(in1.bit and in2.bit)
-		print(out.bit)
 	elif inp_text == "and":
 		out.bit = (in1.bit and in2.bit)
 	elif inp_text == "or":

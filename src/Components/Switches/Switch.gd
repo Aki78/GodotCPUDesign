@@ -48,6 +48,11 @@ func _physics_process(delta):
 #	print(get_overlapping_areas())
 	if grabbed:
 		position = get_global_mouse_position()
+	if Singleton.count % 10 == 0:
+		if Singleton.mode == "normal":
+			for area in get_overlapping_areas():
+				if area.is_in_group("switch"):
+					area.queue_free()
 
 func save():
 	return [var2str(position), bit]
