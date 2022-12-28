@@ -54,3 +54,4 @@ func load_data(state):
 		var switch = Switch.instance()
 		add_child(switch)
 		switch.load_data(_i)
+#	get_child(get_child_count()-1).queue_free()

@@ -17,7 +17,7 @@ func _process(delta):
 		for area in get_overlapping_areas():
 			if "absolute_count" in area:
 				if area.absolute_count > 1:
-					print(area.absolute_count,"ERROROR ABBSSSS") 
+#					print(area.absolute_count,"ERROROR ABBSSSS") 
 					Singleton.push_message("ERROR: More than one absolute count.", true, "r")
 
 func _input(event):
@@ -45,6 +45,7 @@ func set_grab():
 	grabbed = true
 	
 func _physics_process(delta):
+#	print(get_overlapping_areas())
 	if grabbed:
 		position = get_global_mouse_position()
 

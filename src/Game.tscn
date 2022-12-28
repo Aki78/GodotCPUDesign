@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Components/Wires/Wires.gd" type="Script" id=1]
 [ext_resource path="res://MouseTip.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Label.gd" type="Script" id=4]
 [ext_resource path="res://Camera2D.gd" type="Script" id=5]
 [ext_resource path="res://Game.gd" type="Script" id=6]
-[ext_resource path="res://Components/Gates/Gate.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Components/Gates/Gates.gd" type="Script" id=8]
 [ext_resource path="res://HelpLabel.gd" type="Script" id=9]
 [ext_resource path="res://SelectRegion.tscn" type="PackedScene" id=10]
@@ -43,8 +42,6 @@ script = ExtResource( 3 )
 
 [node name="Gates" type="Node2D" parent="Main"]
 script = ExtResource( 8 )
-
-[node name="Gate" parent="Main/Gates" instance=ExtResource( 7 )]
 
 [node name="Contacts" type="Node2D" parent="Main"]
 script = ExtResource( 11 )

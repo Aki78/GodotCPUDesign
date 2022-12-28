@@ -1,14 +1,15 @@
 extends Area2D
 #Node for gate inputs.
 
-var bit = true
+var bit = false
 
-func _physics_process(delta):
-	for area in get_overlapping_areas():
-		if name[0] == "I" and name[1] == "n":
-			if  area.is_in_group("switch") or area.is_in_group("wires"):
-				bit = area.bit
+func _ready():
+	add_to_group("inputs")
 
 func _process(delta):
 	Singleton.set_color(self)
+	print(get_overlapping_areas(), bit )
 		
+
+func set_bit(new_bit):
+	bit = new_bit

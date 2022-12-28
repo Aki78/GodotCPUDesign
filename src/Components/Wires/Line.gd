@@ -21,7 +21,6 @@ var old_bit = true
 var group_name
 var has_absolute = false
 var grabbed = false
-var absolute_count = 0
 var overlapping_absolute_nodes = []
 
 
@@ -30,19 +29,28 @@ var poly : PoolVector2Array
 signal grabbed
 
 func _ready():
-	add_to_group("switchable")
-	add_to_group("wires")
+	if Singleton.count % 100 == 0:
+		for area in get_overlapping_areas():
+			if area.is_in_group("absolute"):
+				set_all_bit(area.bit)
+				print(area)
+
+		Singleton.set_color(self)
+		add_to_group("switchable")
+		add_to_group("wires")
 
 func init(last_center, new_group_name):
 	center1 = last_center
 	group_name = new_group_name
 	
 func set_bit(newbit):
+	if Singleton.count % 100 == 0:
+		print("setbit")
 
 	bit = newbit
-	if old_bit != newbit:
+	if old_bit != newbit:	
 		Singleton.set_color(self)
-	old_bit = newbit
+		old_bit = newbit
 
 func set_poly():
 	var mouse_pos = get_global_mouse_position()
@@ -73,10 +81,10 @@ func add_all_absolutes():
 func delete_all_absolutes():
 	get_tree().call_group(group_name, " delete_absolute")
 
-
+signal send_bit(new_bit)
 
 func set_all_bit(new_bit):
-	get_tree().call_group(group_name, "set_bit", new_bit)
+	emit_signal("send_bit", new_bit)
 
 func add_absolute():
 	has_absolute = true
@@ -89,28 +97,25 @@ func update_last_line():
 		set_poly()
 		
 func _physics_process(delta):
-
 	if Singleton.count % 100 == 0: # to not call so often
+		print(bit)
 		delete_absolute()
 		overlapping_absolute_nodes = []
 		for area in get_overlapping_areas():
 			if area.is_in_group("absolute"):
 				add_absolute()
 				overlapping_absolute_nodes.append(area)
-		
-	for area in get_overlapping_areas():
-		if area.is_in_group("absolute"):
-#			add_all_absolutes()
-			set_all_bit(area.bit)
-#			if absolute_count > 0:
-#				Singleton.push_message("Error: more than 1 absolutes.", true, "r")
-			return
-#			print(absolute_count)
-#			absolute_count += 1
 
 	for area in get_overlapping_areas():
-		if area.is_in_group("contact"):
-			area.bit = bit
+		if area.is_in_group("inputs"):
+			area.set_bit(bit)
+			
+	for area in get_overlapping_areas():
+		if area.is_in_group("absolute"):
+			set_all_bit(area.bit)
+			return
+
+
 
 func _on_Line_area_entered(area):
 	if area.is_in_group("absolute"):

@@ -40,12 +40,16 @@ func push_message(message, dissapear = true, message_color="w"):
 		global_message.modulate.r = 0;
 
 func set_color(node):
-	if !node.bit:
-		node.modulate.r = 255
-		node.modulate.b = 0
-	else:
-		node.modulate.r = 0
-		node.modulate.b = 255
+#	if count %10 == 0:
+#		print(node.bit, "node bit")
+		if !node.bit:
+			node.modulate.r = 255
+			node.modulate.b = 0
+			node.modulate.g = 0
+		else:
+			node.modulate.r = 0
+			node.modulate.b = 255
+			node.modulate.g = 0
 
 func init():
 	file_name = str(OS.get_cmdline_args())

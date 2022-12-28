@@ -8,8 +8,8 @@ func _ready():
 	add_to_group("absolute")
 	modulate.a = 0.5
 
-func _process(delta):
-	print(get_overlapping_areas())
+#func _process(delta):
+#	print(get_overlapping_areas())
 	
 	Singleton.set_color(self)
 		
