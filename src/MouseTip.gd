@@ -7,8 +7,6 @@ var mouse_down = false
 func _ready():
 	$ColorRect.hide()
 	$ColorRect2.hide()
-	
-
 
 func _input(event):
 	if event.is_action_pressed("delete") and Singleton.mode == "normal":
@@ -16,16 +14,12 @@ func _input(event):
 		$ColorRect.show()
 		$ColorRect2.show()
 	if event.is_action_pressed("grab") and Singleton.mode == "normal":
+		Singleton.push_message("grabbing")
 		Singleton.mode = "grab"
 
 		for area in get_overlapping_areas():
 			area.set_grab()
-		
-	#if event.is_action_pressed("left_click") and Singleton.mode == "normal":
-		#if start_select:
-			#start_select = false
-		#else:
-			#start_select = true
+
 	if event.is_action_pressed("left_click") and Singleton.mode == "delete":
 		for area in get_overlapping_areas():
 			if area.is_in_group("switch"):

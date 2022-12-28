@@ -16,12 +16,6 @@ func _input(event):
 		create_switch()
 		following = true
 	if Singleton.mode == "switch" and event.is_action_pressed("left_click"):
-		for area in current_switch.get_overlapping_areas():
-			if area.is_in_group("absolute"):
-				return
-			if area.is_in_group("wires"):
-				if area.has_absolute:
-					return
 				
 		create_switch()
 	if event.is_action_pressed("escape") and Singleton.mode == "switch":

@@ -15,9 +15,10 @@ var bit = false
 var group_name
 var old_bit = true
 var has_absolute = false
-var overlapping_absolute = false
+var overlapping_absolute_nodes = []
 
 var grabbed = false
+var absolute_count = 0
 
 var grab_point
 
@@ -46,8 +47,6 @@ func _input(event):
 				Singleton.current_wire_index += 1
 				get_child(current_line_index).queue_free() #erase last line when escape
 
-		if overlapping_absolute:
-			return
 		if event.is_action_pressed("left_click"):
 				
 			var line = Line.instance()
@@ -72,13 +71,6 @@ func delete_switch():
 	has_absolute = false
 
 func _physics_process(delta):
-	pass
-#	if get_child_count() > 0:
-#		for area in get_child(current_line_index).get_overlapping_areas():
-#			if area.is_in_group("absolute"):
-#				overlapping_absolute = true
-#			else:
-#				overlapping_absolute = false
 	
 	if get_child_count() > 0 and wire_index == Singleton.current_wire_index:
 		get_child(current_line_index).update_last_line()
@@ -94,6 +86,14 @@ func on_grabbed():
 
 
 func _process(delta):
+	if Singleton.count % 10 == 0:
+		overlapping_absolute_nodes = []
+		for _i in get_children():
+			if _i.has_absolute:
+				for _j in _i.overlapping_absolute_nodes:
+					overlapping_absolute_nodes.append(_j)
+		if len(overlapping_absolute_nodes) > 1:
+			Singleton.push_message("More than one absolute!",true,"r")
 	if grabbed:
 		position = get_global_mouse_position() - grab_point
 		

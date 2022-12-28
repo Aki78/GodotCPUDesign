@@ -8,10 +8,36 @@ var _file
 var state = {"wires" : [], "current_wire_index":0, "switches": [], "gates": []}
 var command_stack = [0,0]
 
+var count = 0
+
 
 var current_wire_index = 0
 
 var gate_type = "nand"
+
+var global_message
+func _ready():
+	#Adding a pushable global message
+	global_message = Label.new()
+	global_message.text =  ""
+	global_message.rect_position = -Vector2(0,250)
+	var message_timer = Timer.new()
+	message_timer.one_shot = true
+	message_timer.wait_time = 1.0
+	add_child(global_message)
+	global_message.add_child(message_timer)
+	
+
+func push_message(message, dissapear = true, message_color="w"):
+	global_message.text = message
+	global_message.get_child(0).start()
+	if dissapear:
+		yield(global_message.get_child(0), "timeout")
+		global_message.text = ""
+	if message_color == "r":
+		global_message.modulate.r = 255;
+	else:
+		global_message.modulate.r = 0;
 
 func set_color(node):
 	if !node.bit:
@@ -69,6 +95,7 @@ func save():
 	assert(_file.is_open())
 	_file.store_string(my_text)
 	_file.close()
+	push_message("saved")
 	
 
 func _input(event):
@@ -104,3 +131,5 @@ func _input(event):
 func copy_gate(new_type):
 	gate_type = new_type
 
+func _process(delta):
+	count += 1

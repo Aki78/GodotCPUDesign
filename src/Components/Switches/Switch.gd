@@ -14,6 +14,11 @@ func _ready():
 	
 func _process(delta):
 		Singleton.set_color(self)
+		for area in get_overlapping_areas():
+			if "absolute_count" in area:
+				if area.absolute_count > 1:
+					print(area.absolute_count,"ERROROR ABBSSSS") 
+					Singleton.push_message("ERROR: More than one absolute count.", true, "r")
 
 func _input(event):
 	if event.is_action_pressed("escape"):

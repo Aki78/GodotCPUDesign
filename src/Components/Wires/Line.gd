@@ -21,6 +21,9 @@ var old_bit = true
 var group_name
 var has_absolute = false
 var grabbed = false
+var absolute_count = 0
+var overlapping_absolute_nodes = []
+
 
 var poly : PoolVector2Array
 
@@ -85,22 +88,29 @@ func update_last_line():
 	if get_index() == current_line_index:
 		set_poly()
 		
-func _process(delta):
-	delete_all_absolutes()
+func _physics_process(delta):
+
+	if Singleton.count % 100 == 0: # to not call so often
+		delete_absolute()
+		overlapping_absolute_nodes = []
+		for area in get_overlapping_areas():
+			if area.is_in_group("absolute"):
+				add_absolute()
+				overlapping_absolute_nodes.append(area)
+		
 	for area in get_overlapping_areas():
 		if area.is_in_group("absolute"):
-			add_all_absolutes()
+#			add_all_absolutes()
 			set_all_bit(area.bit)
+#			if absolute_count > 0:
+#				Singleton.push_message("Error: more than 1 absolutes.", true, "r")
 			return
-		if area.is_in_group("out"):
-			add_all_absolutes()
-			set_all_bit(area.bit)
-			return
+#			print(absolute_count)
+#			absolute_count += 1
 
 	for area in get_overlapping_areas():
 		if area.is_in_group("contact"):
 			area.bit = bit
-
 
 func _on_Line_area_entered(area):
 	if area.is_in_group("absolute"):

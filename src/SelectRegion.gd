@@ -6,10 +6,19 @@ var co
 
 var mouse_down = false
 
-
 var all_selected = []
 
+func _ready():
+	$CollisionShape2D.shape.extents = Vector2(0,0)
+	$CollisionShape2D.global_position = Vector2(10000000, 10000000)
+
+
 func _input(event):
+
+	if event.is_action_pressed("visual") and Singleton.mode == "normal":
+		Singleton.mode = "visual"
+	if Singleton.mode != "visual":
+		return
 	if event.is_action_pressed("left_click"):
 		mouse_down = true
 		$ColorRect3.show()
@@ -21,8 +30,6 @@ func _input(event):
 		mouse_down = false
 		$ColorRect3.hide()
 		$CollisionShape2D.hide()
-	if event.is_action_pressed("visual") and Singleton.mode == "normal":
-		Singleton.mode = "visual"
 	if event.is_action_pressed("delete") and Singleton.mode == "visual":
 		for _i in get_overlapping_areas():
 			_i.queue_free()
