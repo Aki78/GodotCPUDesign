@@ -55,6 +55,7 @@ You must be in normal mode in order to switch to different modes
 * go back to center: gg
 * save and quit: ZZ
 * quit without saving: :q
+* visual mode: (to select region) v
 
 
 
