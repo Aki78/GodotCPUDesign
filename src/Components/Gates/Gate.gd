@@ -74,6 +74,8 @@ func set_logic():
 		out.bit = bit_mem()
 	elif inp_text == "byte":
 		byte_mem()
+	elif inp_text == "reg":
+		register()
 	elif inp_text == "enable":
 		byte_enable()
 
@@ -172,6 +174,19 @@ func bit_mem():
 
 func byte_mem():
 	var inE = $Areas/Inputs.get_node("InE")
+	if inE:
+		if inE.bit:
+			for i in range(outputs.get_child_count()):
+				outputs.get_child(i).bit = inputs.get_child(i).bit
+func register():
+	var inE = $Areas/Inputs.get_node("InE")
+	var inS = $Areas/Inputs.get_node("InS")
+	if inS:
+		if !inS.bit:
+			for i in range(outputs.get_child_count()):
+				outputs.get_child(i).bit = false
+			return
+			
 	if inE:
 		if inE.bit:
 			for i in range(outputs.get_child_count()):
