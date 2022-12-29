@@ -87,6 +87,7 @@ func init():
 	_file.close()
 
 func save():
+	state = {"wires" : [], "current_wire_index":0, "switches": [], "gates": []}
 	var main_node = get_tree().get_root().get_node("Game").get_node("Main")
 	var wires_node = main_node.get_node("Wires")
 	var switches_node = main_node.get_node("Switches")

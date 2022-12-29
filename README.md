@@ -4,37 +4,6 @@
     <img src="./logic_example.gif">
 </p>
 
-<!--# Pages-->
-
-<!--[Airport Heist Webpage](https://Aki78.pythonanywhere.com/Home)-->
-
-<!--[Presentation slides](https://docs.google.com/presentation/d/1KQzT6HgW3f3YZGUjU3Hmdlt3Ok5fKIw4FlIvdmF3t5Y/edit#slide=id.g166b1584af2_14_1)-->
-
-<!--## Contents-->
-<!--[Introduction](#introduction)-->
-
-<!--- [Abstract](#abstract)-->
-<!--- [Introduction](#introduction)-->
-
-<!--[Current State](#current-state)-->
-
-<!--[Vision](#vision)-->
-
-<!--- [Backstory](#backstory)-->
-<!--- [Setting](#setting)-->
-<!--- [Objective](#objective)-->
-
-<!--[Functional Requirements](#functional-requirements)-->
-
-<!--- [How the game works](#how-the-game-works)-->
-<!--- [Decision Tree](#decision-tree)-->
-<!--- [Project Diagram](#project-diagram)-->
-
-<!--[Quality Requirements](#quality-requirements)-->
-
-<!--- [Preliminary Requirements](#software-1-preliminary-requirements)-->
-<!--- [Final Requirements](#software-2-final-requirements)-->
-<!--- [Further Development Ideas](#further-development-ideas)-->
 
 <!--[Project information](#project-info)-->
 ## Introduction
@@ -51,8 +20,8 @@ You must be in normal mode in order to switch to different modes
 * gate mode: (add logic gate) l
 * delete mode: (delete components) x, d or delete\_key
 * rotate mode: (rotate a gate) r
-* save: ctrl+s or :w
-* go back to center: gg
+* save: ctrl+s
+* go back to center: t
 * save and quit: ZZ
 * quit without saving: :q
 * visual mode: (to select region) v
