@@ -51,7 +51,7 @@ func set_shape():
 		pass
 	elif inp_text == "bit":
 		pass
-	elif inp_text == "byte":
+	elif inp_text == "byte" or inp_text == "reg":
 		rescale8()
 	elif inp_text == "enable":
 		rescale8()
@@ -78,6 +78,7 @@ func set_logic():
 		byte_enable()
 
 func rescale8():
+	#reshape to register or byte_mem
 	$CollisionShape.scale.y = 8
 	$CollisionShape.scale.x = 2
 	$CollisionShape.global_position.y = position.y  #+ 38
@@ -95,7 +96,12 @@ func rescale8():
 		$Areas/Inputs.add_child(new_in)
 	var inE = InNode.instance()
 	inE.name = "InE"
+	var inS
 	$Areas/Inputs.add_child(inE)
+	if inp_text == "reg":
+		inS = InNode.instance()
+		inS.name = "InS"
+		$Areas/Inputs.add_child(inS)
 
 	for i in range(outputs.get_child_count()):
 		inputs.get_child(i).global_position.x = position.x -30.5
@@ -105,8 +111,13 @@ func rescale8():
 		outputs.get_child(i).global_position.x = position.x + 30.5
 		outputs.get_child(i).global_position.y = position.y + i*20 - 70
 		outputs.get_child(i).show()
-	inE.global_position.x = position.x
 	inE.global_position.y = position.y + 90
+	if inS:
+		inE.global_position.x = position.x + 10
+		inS.global_position.x = position.x - 10
+		inS.global_position.y = position.y + 90
+	else:
+		inE.global_position.x = position.x
 	inE.show()
 
 func unscale():
@@ -125,6 +136,8 @@ func unscale():
 			outputs.get_node("Out"+str(i)).queue_free()
 	if inputs.get_node("InE"):
 		inputs.get_node("InE").queue_free()
+	if inputs.get_node("InS"):
+		inputs.get_node("InS").queue_free()
 	out.global_position.y = position.y 
 
 func _physics_process(delta):
