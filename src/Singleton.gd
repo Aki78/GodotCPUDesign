@@ -126,11 +126,11 @@ func _input(event):
 				print(KEY_COLON, " ", event.scancode)
 				print("Saved")
 				Singleton.mode = "normal"
-			if command_stack[1]== KEY_G and command_stack[0]==KEY_G:
-				get_tree().get_root().get_node("Game").get_node("Camera2D").offset = Vector2(0,0)
-				get_tree().get_root().get_node("Game").get_node("Camera2D").reset_zoom()
-				Singleton.mode = "normal"
-				command_stack = [0,0]
+	if event.is_action_pressed("center"):
+		get_tree().get_root().get_node("Game").get_node("Camera2D").offset = Vector2(0,0)
+		get_tree().get_root().get_node("Game").get_node("Camera2D").reset_zoom()
+		Singleton.mode = "normal"
+		command_stack = [0,0]
 
 func copy_gate(new_type):
 	gate_type = new_type
