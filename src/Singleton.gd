@@ -54,9 +54,11 @@ func set_color(node):
 func init():
 	file_name = str(OS.get_cmdline_args())
 #	file_name = "test.gdlg"
+#	print(parse_json(file_name)) # Doesn't work for some reason
 	if file_name:
 		file_name = file_name.replace("[","")
 		file_name = file_name.replace("]","")
+		print(file_name)
 	if !file_name:
 #		push_error("NO FILE GIVEN")
 		#printerr("Must provide a .gdlg file to store data.")
@@ -71,8 +73,9 @@ func init():
 			get_tree().quit()
 	var output = []
 	var exit_code = OS.execute("realpath", [file_name], true, output)
+	print(output)
 	_file = File.new()
-	#file_path = output[0].replace("\n","")
+	file_path = output[0].replace("\n","")
 	#file_path = "/home/aki/Documents/buffer.gdlg"
 	_file.open(file_path, _file.READ)
 	var data = parse_json(_file.get_as_text())

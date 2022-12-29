@@ -1,11 +1,1 @@
-This is line one.
-This is line two.
-	This line is indented.
-______________________________________
-Also, using triple quotes
-will make it easier to write
-	plain text without having to use
-		newline or tab 
-	characters so you can format
-the text however you want.
-______________________________________
+{"wires":[],"current_wire_index":0,"switches":[["Vector2( -211, -153 )",false],["Vector2( -132, 60 )",false]],"gates":[]}
