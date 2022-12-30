@@ -49,10 +49,11 @@ func _physics_process(delta):
 	if grabbed:
 		position = get_global_mouse_position()
 	if Singleton.count % 10 == 0:
-		if Singleton.mode == "normal":
-			for area in get_overlapping_areas():
-				if area.is_in_group("switch"):
-					area.queue_free()
+#		if Singleton.mode == "normal":
+		for area in get_overlapping_areas():
+			if area.is_in_group("switch"):
+#					area.queue_free()
+				Singleton.push_message("ERROR: Two Switches on top of eachother",true,"r")
 
 func save():
 	return [var2str(position), bit]

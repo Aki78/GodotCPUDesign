@@ -16,11 +16,11 @@ func _input(event):
 		Singleton.mode = "normal"
 		free_empty_wires()
 
-	if event.is_action_pressed("input"):
-		free_empty_wires()
-		Singleton.mode = "input"
+#	if event.is_action_pressed("input"):
+#		free_empty_wires()
+#		Singleton.mode = "input"
 		
-	if event.is_action_pressed("wire") and Singleton.mode != "wire":
+	if event.is_action_pressed("wire") and Singleton.mode == "normal":
 		free_empty_wires()
 		Singleton.mode = "wire"
 		new_wire()
