@@ -7,7 +7,7 @@
 
 <!--[Project information](#project-info)-->
 ## Introduction
-A simple logic gate simulator in Godot Version 3.5.
+A simple logic gate simulator made with Godot Version 3.5.
 
 The Browser version can be used on  [https://aki78.itch.io/gdlogic](https://aki78.itch.io/gdlogic) , however, the save option currently might not work on the browser version.
 
