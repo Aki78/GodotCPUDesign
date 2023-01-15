@@ -100,6 +100,9 @@ func _process(delta):
 		if area.is_in_group("absolute"):
 			set_all_bit(area.bit)
 			return
+#
+#func _physics_process(delta):
+#
 
 func set_grab():
 	emit_signal("grabbed")

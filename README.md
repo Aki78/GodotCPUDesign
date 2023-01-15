@@ -14,7 +14,7 @@ You must be in normal mode in order to switch to different modes
 
 * normal mode: esc, q or right\_click
 * wire mode: (draw wires) w
-* switch mode: (add switches) s
+* switch mode: (add bit switches) b
 * input mode: (change logic type) i
 * help mode: (help screen) h
 * gate mode: (add logic gate) l
@@ -135,6 +135,7 @@ You must be in normal mode in order to switch to different modes
 * Fully Programmable Gates
 * Bundlable logic
 * Better Graphics
+* Saveable on browser version
 
 <!--[Back to top](#airport-heist)-->
 
