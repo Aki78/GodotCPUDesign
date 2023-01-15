@@ -11,7 +11,6 @@ A simple logic gate simulator in Godot Version 3.5.
 
 The Browser version can be used on  [https://aki78.itch.io/gdlogic](https://aki78.itch.io/gdlogic) , however, the save option currently might not work.
 
-<https://aki78.itch.io/gdlogic>
 
 ## Key Bindings
 You must be in normal mode in order to switch to different modes
