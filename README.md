@@ -9,6 +9,10 @@
 ## Introduction
 A simple logic gate simulator made with Godot Version 3.5.
 
+Our goal is to create a simulator for logic gates that is both intuitive and easy to use, while also being incredibly fast, allowing you to design and test circuits at the speed of thought.
+
+With our simulator, you can design complex logic circuits using a simple and intuitive hot-key interface. We've made sure to prioritize user experience, so you can focus on your designs without getting bogged down in confusing interfaces or clunky tools.
+
 The Browser version can be used on  [https://aki78.itch.io/gdlogic](https://aki78.itch.io/gdlogic) , however, the save option currently might not work on the browser version.
 
 
